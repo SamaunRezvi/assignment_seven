@@ -8,16 +8,16 @@ import { authClient } from "@/lib/auth/auth-client";
 import { NETWORK_ERROR_MESSAGE, getAuthErrorMessage } from "@/lib/auth/errors";
 import {
   getFieldErrors,
-  signUpSchema,
+  signUpFormSchema,
   type FieldErrors,
-  type SignUpInput,
+  type SignUpFormInput,
 } from "@/lib/validation/auth";
 import { getSafeRedirect } from "@/lib/validation/redirect";
 import { FormField } from "./form-field";
 
 export function SignUpForm({ callbackUrl }: { callbackUrl?: string | null }) {
   const router = useRouter();
-  const [errors, setErrors] = useState<FieldErrors<SignUpInput>>({});
+  const [errors, setErrors] = useState<FieldErrors<SignUpFormInput>>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [isPending, setIsPending] = useState(false);
 
@@ -26,14 +26,15 @@ export function SignUpForm({ callbackUrl }: { callbackUrl?: string | null }) {
     setFormError(null);
 
     const formData = new FormData(event.currentTarget);
-    const parsed = signUpSchema.safeParse({
+    const parsed = signUpFormSchema.safeParse({
       name: formData.get("name"),
       email: formData.get("email"),
       password: formData.get("password"),
+      confirmPassword: formData.get("confirmPassword"),
     });
 
     if (!parsed.success) {
-      const fieldErrors = getFieldErrors<SignUpInput>(parsed.error);
+      const fieldErrors = getFieldErrors<SignUpFormInput>(parsed.error);
       setErrors(fieldErrors);
       toast.error(Object.values(fieldErrors)[0] ?? "তথ্য সঠিকভাবে পূরণ করুন।");
       return;
@@ -43,7 +44,8 @@ export function SignUpForm({ callbackUrl }: { callbackUrl?: string | null }) {
     setIsPending(true);
 
     try {
-      const { error } = await authClient.signUp.email(parsed.data);
+      const { name, email, password } = parsed.data;
+      const { error } = await authClient.signUp.email({ name, email, password });
       if (error) {
         const message = getAuthErrorMessage(
           error,
@@ -72,12 +74,12 @@ export function SignUpForm({ callbackUrl }: { callbackUrl?: string | null }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-4">
+    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
       <FormField
         label="নাম"
         name="name"
         autoComplete="name"
-        placeholder="আপনার নাম"
+        placeholder="যেমন: রহিম উদ্দিন"
         error={errors.name}
         disabled={isPending}
         required
@@ -103,6 +105,16 @@ export function SignUpForm({ callbackUrl }: { callbackUrl?: string | null }) {
         disabled={isPending}
         required
       />
+      <FormField
+        label="পাসওয়ার্ড নিশ্চিত করুন"
+        name="confirmPassword"
+        type="password"
+        autoComplete="new-password"
+        placeholder="আবার লিখুন"
+        error={errors.confirmPassword}
+        disabled={isPending}
+        required
+      />
       {formError ? (
         <div role="alert" className="alert alert-error alert-soft text-sm">
           {formError}
@@ -110,7 +122,7 @@ export function SignUpForm({ callbackUrl }: { callbackUrl?: string | null }) {
       ) : null}
       <button type="submit" disabled={isPending} className="btn btn-primary w-full">
         {isPending ? <span className="loading loading-spinner loading-sm" /> : null}
-        রেজিস্টার করুন
+        অ্যাকাউন্ট তৈরি করুন
       </button>
     </form>
   );

@@ -30,10 +30,18 @@ export const signInSchema = z.object({
 
 export const signUpSchema = z.object({ name, email, password: newPassword });
 
+export const signUpFormSchema = signUpSchema
+  .extend({ confirmPassword: z.string().min(1, "পাসওয়ার্ড আবার লিখুন") })
+  .refine((value) => value.password === value.confirmPassword, {
+    message: "পাসওয়ার্ড দুটি মিলছে না",
+    path: ["confirmPassword"],
+  });
+
 export const updateNameSchema = z.object({ name });
 
 export type SignInInput = z.infer<typeof signInSchema>;
 export type SignUpInput = z.infer<typeof signUpSchema>;
+export type SignUpFormInput = z.infer<typeof signUpFormSchema>;
 export type UpdateNameInput = z.infer<typeof updateNameSchema>;
 
 export type FieldErrors<T> = Partial<Record<keyof T, string>>;
