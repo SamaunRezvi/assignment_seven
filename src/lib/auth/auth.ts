@@ -31,7 +31,6 @@ function createAuth() {
       enabled: true,
       minPasswordLength: 8,
       maxPasswordLength: 128,
-      autoSignIn: false,
     },
     socialProviders,
     session: {

@@ -46,6 +46,9 @@ export function SignUpForm({ callbackUrl }: { callbackUrl?: string | null }) {
         return;
       }
 
+      // Registration signs the user in; end that session so they land on the sign in page.
+      await authClient.signOut().catch(() => undefined);
+
       toast.success("অ্যাকাউন্ট তৈরি হয়েছে। এখন সাইন ইন করুন।");
       const target = new URLSearchParams();
       const safeCallback = getSafeRedirect(callbackUrl);
