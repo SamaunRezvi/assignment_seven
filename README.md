@@ -14,17 +14,17 @@ BazarDor shows today's retail prices for rice, lentils, oil, vegetables, fish, m
 
 ## 🧰 Technologies Used
 
-| Purpose            | Technology                                      |
-| ------------------ | ----------------------------------------------- |
-| Framework          | Next.js 16 (App Router)                         |
-| Language           | TypeScript                                      |
-| UI                 | React 19, Tailwind CSS 4, DaisyUI 5             |
-| Authentication     | Better Auth (email and password, Google, GitHub) |
-| Database           | PostgreSQL (Neon) through `pg`                  |
-| Validation         | Zod                                             |
-| Notifications      | react-hot-toast                                 |
-| Tooling            | ESLint, Prettier                                |
-| Deployment         | Vercel                                          |
+| Purpose        | Technology                                       |
+| -------------- | ------------------------------------------------ |
+| Framework      | Next.js 16 (App Router)                          |
+| Language       | TypeScript                                       |
+| UI             | React 19, Tailwind CSS 4, DaisyUI 5              |
+| Authentication | Better Auth (email and password, Google, GitHub) |
+| Database       | PostgreSQL (Neon) through `pg`                   |
+| Validation     | Zod                                              |
+| Notifications  | react-hot-toast                                  |
+| Tooling        | ESLint, Prettier                                 |
+| Deployment     | Vercel                                           |
 
 ## 🗂️ Project Structure
 
@@ -71,13 +71,13 @@ cp .env.example .env
 
 Fill in `.env`:
 
-| Variable                                  | Description                                                    |
-| ----------------------------------------- | -------------------------------------------------------------- |
-| `DATABASE_URL`                            | Pooled PostgreSQL connection string                            |
-| `BETTER_AUTH_SECRET`                      | Random secret of at least 32 characters (`openssl rand -base64 32`) |
-| `BETTER_AUTH_URL`                         | Public origin, for example `http://localhost:3000`             |
-| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Google OAuth credentials                                      |
-| `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` | GitHub OAuth credentials                                      |
+| Variable                                   | Description                                                         |
+| ------------------------------------------ | ------------------------------------------------------------------- |
+| `DATABASE_URL`                             | Pooled PostgreSQL connection string                                 |
+| `BETTER_AUTH_SECRET`                       | Random secret of at least 32 characters (`openssl rand -base64 32`) |
+| `BETTER_AUTH_URL`                          | Public origin, for example `http://localhost:3000`                  |
+| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Google OAuth credentials                                            |
+| `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` | GitHub OAuth credentials                                            |
 
 OAuth callback URLs:
 
@@ -93,16 +93,16 @@ npm run dev
 
 ### Scripts
 
-| Command              | Description                              |
-| -------------------- | ---------------------------------------- |
-| `npm run dev`        | Start the development server             |
-| `npm run build`      | Create a production build                |
-| `npm run start`      | Serve the production build               |
-| `npm run lint`       | Run ESLint                               |
-| `npm run typecheck`  | Run the TypeScript compiler              |
-| `npm run format`     | Format the code with Prettier            |
-| `npm run auth:migrate` | Create or update the auth tables       |
-| `npm run audit:prod` | Audit production dependencies            |
+| Command                | Description                      |
+| ---------------------- | -------------------------------- |
+| `npm run dev`          | Start the development server     |
+| `npm run build`        | Create a production build        |
+| `npm run start`        | Serve the production build       |
+| `npm run lint`         | Run ESLint                       |
+| `npm run typecheck`    | Run the TypeScript compiler      |
+| `npm run format`       | Format the code with Prettier    |
+| `npm run auth:migrate` | Create or update the auth tables |
+| `npm run audit:prod`   | Audit production dependencies    |
 
 ## 🔒 Security
 
