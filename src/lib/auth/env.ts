@@ -4,7 +4,7 @@ import { z } from "zod";
 const optionalSecret = z.string().min(1).optional();
 
 const authEnvSchema = z.object({
-  DATABASE_URL: z.string().min(1, "DATABASE_URL is required"),
+  DATABASE_URL: z.string().min(1, "DATABASE_URL (or POSTGRES_URL) is required"),
   BETTER_AUTH_SECRET: z
     .string()
     .min(32, "BETTER_AUTH_SECRET must be at least 32 characters"),
@@ -22,7 +22,8 @@ let cached: AuthEnv | undefined;
 export function getAuthEnv(): AuthEnv {
   if (!cached) {
     const result = authEnvSchema.safeParse({
-      DATABASE_URL: process.env.DATABASE_URL,
+      // The Vercel Neon integration exposes the pooled string as POSTGRES_URL.
+      DATABASE_URL: process.env.DATABASE_URL || process.env.POSTGRES_URL,
       BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
       BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
       GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || undefined,
