@@ -43,10 +43,11 @@ function createAuth() {
       maxPasswordLength: 128,
     },
     socialProviders,
+    // No cookie cache: every request is checked against the database, so a
+    // session that was signed out or revoked stops working immediately.
     session: {
       expiresIn: 7 * ONE_DAY,
       updateAge: ONE_DAY,
-      cookieCache: { enabled: true, maxAge: 5 * 60 },
     },
     rateLimit: {
       enabled: true,
