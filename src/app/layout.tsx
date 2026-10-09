@@ -23,7 +23,6 @@ export const metadata: Metadata = {
   description:
     "চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার আজকের বাজারদর, গড়, সর্বনিম্ন ও সর্বোচ্চ দাম এবং দামের পরিবর্তন এক জায়গায়।",
   applicationName: siteConfig.nameEn,
-  icons: { icon: "/logo-icon.png" },
 };
 
 export const viewport: Viewport = {

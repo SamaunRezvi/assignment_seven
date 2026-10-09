@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/container";
 import { ProductGridSkeleton } from "@/components/product/product-grid-skeleton";
 
-export default function HomeLoading() {
+export function HomeSkeleton() {
   return (
     <>
       <section className="bg-base-100">
