@@ -34,9 +34,24 @@ export function SignOutButton() {
       type="button"
       onClick={handleSignOut}
       disabled={isPending}
-      className="btn btn-outline btn-primary btn-sm sm:btn-md"
+      className="hover:bg-base-200 flex min-h-8 w-full cursor-pointer items-center gap-1 rounded-lg px-2 py-1 text-left text-sm text-red-500 disabled:cursor-wait disabled:opacity-60"
     >
-      {isPending ? <span className="loading loading-spinner loading-xs" /> : null}
+      {isPending ? (
+        <span aria-hidden="true" className="loading loading-spinner loading-xs" />
+      ) : (
+        <svg
+          aria-hidden="true"
+          className="size-3.5 shrink-0"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m9 10-4 4 4 4M5 14h10a4 4 0 0 0 0-8h-2" />
+        </svg>
+      )}
       সাইন আউট
     </button>
   );
