@@ -115,9 +115,19 @@ npm run dev
 - API responses are validated against a schema, and users only ever see safe, localized error messages.
 - Secrets live in environment variables and are excluded from version control.
 
+## 📡 Data Source and Fallback
+
+Prices come from the public BazarDor API, with a second API as an automatic backup.
+
+1. **Live data first.** Every request goes to the primary API. If it is down, rate limited or returns bad data, the second API is used, and the failing one is skipped for a minute so the site stays fast. Successful responses are cached for 30 minutes.
+2. **Bundled snapshot as a safety net.** If both APIs are unavailable, the app serves a snapshot of the last known prices stored in `src/data` (33 products, 8 categories, prices from 12 markets each). The site never goes blank during an outage or a rate limit.
+3. **Back to live automatically.** As soon as an API responds again, live data is used and no action is needed.
+
+The snapshot is only a fallback. Prices shown from it may be slightly older than the live API.
+
 ## ⚠️ Error Handling
 
-Product data comes from two interchangeable public APIs. Requests time out after 6 seconds. If one API is down, rate limited or returns bad data, the other one is used automatically, and the failing one is skipped for a minute so the site stays fast. If both APIs are unavailable, the app serves a bundled snapshot of the last known prices from `src/data`, so the site never goes blank during an outage or a rate limit. Errors are typed (network, timeout, not found, rate limited, server, invalid response). Each one is shown as a clear Bangla message with a retry action. Unknown routes, invalid categories and unknown products render a friendly 404 with a link back to the home page.
+Requests time out after 6 seconds and failures are typed (network, timeout, not found, rate limited, server, invalid response). Each one is shown as a clear Bangla message with a retry action. Unknown routes, invalid categories and unknown products render a friendly 404 with a link back to the home page.
 
 ## ☁️ Deployment
 
