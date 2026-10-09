@@ -14,7 +14,7 @@ export function SectionHeading({ id, title, marker, subtitle }: SectionHeadingPr
         {marker ? (
           <span
             aria-hidden="true"
-            className={cn(marker.tone === "up" ? "text-error" : "text-success")}
+            className={cn(marker.tone === "up" ? "price-up" : "price-down")}
           >
             {marker.symbol}
           </span>

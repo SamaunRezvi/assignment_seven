@@ -89,16 +89,17 @@
   animation: ticker-scroll 45s linear infinite;
 }
 
+/* Price movement colors: green up, red down, gray flat (readable on light backgrounds). */
 .price-up {
-  color: var(--color-error);
+  color: oklch(46% 0.14 152);
 }
 
 .price-down {
-  color: var(--color-success);
+  color: oklch(50% 0.19 25);
 }
 
 .price-flat {
-  color: var(--color-base-content);
+  color: oklch(50% 0.01 150);
 }
 
 .ticker:hover .animate-ticker,
