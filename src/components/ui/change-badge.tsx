@@ -8,7 +8,7 @@ const styles = {
   flat: "price-flat",
 } as const;
 
-const symbols = { up: "▲", down: "▼", flat: "—" } as const;
+const symbols = { up: "▲", down: "▼", flat: "-" } as const;
 
 const labels = {
   up: "দাম বেড়েছে",

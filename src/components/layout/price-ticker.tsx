@@ -3,7 +3,7 @@ import { formatPercent, formatPrice, formatShortUnit } from "@/lib/format/bengal
 import { cn } from "@/lib/utils";
 import type { Product } from "@/types/product";
 
-const arrows = { up: "▲", down: "▼", flat: "—" } as const;
+const arrows = { up: "▲", down: "▼", flat: "-" } as const;
 
 const tones = {
   up: "price-up",
