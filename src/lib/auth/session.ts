@@ -6,10 +6,16 @@ import { routes } from "@/config/site";
 import { getAuth } from "./auth";
 
 export const getSession = cache(async () => {
+  // Reading headers first keeps every page dynamic, even when auth is misconfigured.
+  const requestHeaders = await headers();
+
   try {
-    return await getAuth().api.getSession({ headers: await headers() });
+    return await getAuth().api.getSession({ headers: requestHeaders });
   } catch (error) {
-    console.error("[auth] Failed to resolve session", error);
+    console.error(
+      "[auth] Failed to resolve session:",
+      error instanceof Error ? error.message : "unknown error",
+    );
     return null;
   }
 });
