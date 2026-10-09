@@ -17,7 +17,7 @@ export default async function ProfilePage() {
   const { user } = await requireSession(routes.profile);
 
   return (
-    <Container className="max-w-2xl py-10">
+    <Container className="py-6">
       <div className="card border-base-300 bg-base-100 border shadow-sm">
         <div className="card-body items-center gap-5 p-6 text-center sm:p-10">
           <span
