@@ -143,7 +143,7 @@ Fill `.env` with your own values before starting the app, then open `http://loca
 | Resource               | Link                                                                             |
 | :--------------------- | :------------------------------------------------------------------------------- |
 | GitHub repository      | [SamaunRezvi/assignment_seven](https://github.com/SamaunRezvi/assignment_seven)  |
-| Live application       | [BazarDor - daily market prices](https://assignment-seven-sigma-ten.vercel.app/) |
+| Live application       | [BazarDor - Daily market prices](https://assignment-seven-sigma-ten.vercel.app/) |
 
 ## Project Note
 
