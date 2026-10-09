@@ -1,10 +1,17 @@
 export type ApiErrorKind =
-  "network" | "timeout" | "not-found" | "client" | "server" | "invalid-response";
+  | "network"
+  | "timeout"
+  | "not-found"
+  | "rate-limited"
+  | "client"
+  | "server"
+  | "invalid-response";
 
 const userMessages: Record<ApiErrorKind, string> = {
   network: "ইন্টারনেট সংযোগে সমস্যা হয়েছে। সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।",
   timeout: "সার্ভার সাড়া দিতে বেশি সময় নিচ্ছে। কিছুক্ষণ পর আবার চেষ্টা করুন।",
   "not-found": "আপনি যে তথ্যটি খুঁজছেন তা পাওয়া যায়নি।",
+  "rate-limited": "অনেক বেশি অনুরোধ হয়েছে। এক মিনিট পর আবার চেষ্টা করুন।",
   client: "অনুরোধটি সঠিক নয়। পেজটি রিফ্রেশ করে আবার চেষ্টা করুন।",
   server: "সার্ভারে সাময়িক সমস্যা হচ্ছে। কিছুক্ষণ পর আবার চেষ্টা করুন।",
   "invalid-response":
@@ -22,8 +29,18 @@ export class ApiError extends Error {
     this.status = options.status;
   }
 
+  /** True when trying the other API endpoint could succeed. */
+  get shouldFailover(): boolean {
+    return this.isRetryable || this.kind === "invalid-response";
+  }
+
   get isRetryable(): boolean {
-    return this.kind === "network" || this.kind === "timeout" || this.kind === "server";
+    return (
+      this.kind === "network" ||
+      this.kind === "timeout" ||
+      this.kind === "server" ||
+      this.kind === "rate-limited"
+    );
   }
 }
 
