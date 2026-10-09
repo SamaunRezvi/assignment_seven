@@ -5,7 +5,12 @@ import { useState, type FormEvent } from "react";
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth/auth-client";
 import { NETWORK_ERROR_MESSAGE, getAuthErrorMessage } from "@/lib/auth/errors";
-import { getFieldErrors, signInSchema, type FieldErrors, type SignInInput } from "@/lib/validation/auth";
+import {
+  getFieldErrors,
+  signInSchema,
+  type FieldErrors,
+  type SignInInput,
+} from "@/lib/validation/auth";
 import { getSafeRedirect } from "@/lib/validation/redirect";
 import { FormField } from "./form-field";
 
@@ -38,7 +43,10 @@ export function SignInForm({ callbackUrl }: { callbackUrl?: string | null }) {
     try {
       const { error } = await authClient.signIn.email(parsed.data);
       if (error) {
-        const message = getAuthErrorMessage(error, "সাইন ইন করা যায়নি। আবার চেষ্টা করুন।");
+        const message = getAuthErrorMessage(
+          error,
+          "সাইন ইন করা যায়নি। আবার চেষ্টা করুন।",
+        );
         setFormError(message);
         toast.error(message);
         return;

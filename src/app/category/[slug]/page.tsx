@@ -18,7 +18,9 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const { slug } = await params;
   try {
     const category = await getCategory(slug);
-    return category ? { title: `${category.nameBn} এর আজকের দাম` } : { title: "পেজ পাওয়া যায়নি" };
+    return category
+      ? { title: `${category.nameBn} এর আজকের দাম` }
+      : { title: "পেজ পাওয়া যায়নি" };
   } catch {
     return { title: "পণ্যের দাম" };
   }
@@ -37,7 +39,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   } catch (error) {
     if (!isApiError(error)) throw error;
     console.error(`[category:${slug}] Failed to load data`, error.kind);
-    return <DataLoadError message={getUserMessage(error)} retryable={error.isRetryable} />;
+    return (
+      <DataLoadError message={getUserMessage(error)} retryable={error.isRetryable} />
+    );
   }
 
   const total = formatNumber(products.length);
@@ -64,7 +68,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               📭
             </span>
             <h2 className="text-2xl font-bold">কোনো পণ্য পাওয়া যায়নি</h2>
-            <p className="text-base-content/70">এই ধরনের কোনো পণ্যের দাম এখন তালিকায় নেই।</p>
+            <p className="text-base-content/70">
+              এই ধরনের কোনো পণ্যের দাম এখন তালিকায় নেই।
+            </p>
             <Link href={routes.home} className="btn btn-primary mt-2">
               হোম পেজে ফিরে যান
             </Link>

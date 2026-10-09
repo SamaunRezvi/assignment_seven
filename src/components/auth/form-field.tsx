@@ -7,7 +7,13 @@ interface FormFieldProps extends Omit<ComponentPropsWithoutRef<"input">, "id"> {
   error?: string;
 }
 
-export function FormField({ label, error, type = "text", className, ...props }: FormFieldProps) {
+export function FormField({
+  label,
+  error,
+  type = "text",
+  className,
+  ...props
+}: FormFieldProps) {
   const id = useId();
   const errorId = `${id}-error`;
   const [isVisible, setIsVisible] = useState(false);

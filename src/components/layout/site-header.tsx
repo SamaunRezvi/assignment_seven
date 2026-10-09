@@ -39,7 +39,9 @@ export function SiteHeader() {
             <AuthMenu />
           </Suspense>
         </div>
-        <Suspense fallback={<div className="skeleton border-base-300 mb-2 h-10 w-full" />}>
+        <Suspense
+          fallback={<div className="skeleton border-base-300 mb-2 h-10 w-full" />}
+        >
           <HeaderCategoryNav />
         </Suspense>
       </Container>

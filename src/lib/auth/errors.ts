@@ -29,8 +29,10 @@ export function getAuthErrorMessage(
 ): string {
   if (!error) return fallback;
   if (error.code && codeMessages[error.code]) return codeMessages[error.code]!;
-  if (error.status === 429) return "অনেকবার চেষ্টা করা হয়েছে। এক মিনিট পর আবার চেষ্টা করুন।";
-  if (error.status === 401 || error.status === 403) return "আপনাকে এই কাজের অনুমতি দেওয়া হয়নি।";
+  if (error.status === 429)
+    return "অনেকবার চেষ্টা করা হয়েছে। এক মিনিট পর আবার চেষ্টা করুন।";
+  if (error.status === 401 || error.status === 403)
+    return "আপনাকে এই কাজের অনুমতি দেওয়া হয়নি।";
   if (error.status && error.status >= 500) {
     return "সার্ভারে সাময়িক সমস্যা হচ্ছে। কিছুক্ষণ পর আবার চেষ্টা করুন।";
   }

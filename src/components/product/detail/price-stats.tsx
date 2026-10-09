@@ -30,7 +30,9 @@ export function PriceStats({ summary, unit }: PriceStatsProps) {
             </span>
             <div>
               <dt className="text-base-content/60 text-sm">{stat.label}</dt>
-              <dd className={`text-2xl font-bold ${stat.tone}`}>{formatPrice(stat.value)}</dd>
+              <dd className={`text-2xl font-bold ${stat.tone}`}>
+                {formatPrice(stat.value)}
+              </dd>
               <dd className="text-base-content/50 text-xs">{formatUnit(unit)}</dd>
             </div>
           </div>

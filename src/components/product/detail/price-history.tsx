@@ -4,7 +4,7 @@ import type { Product } from "@/types/product";
 
 function Trend({ current, previous }: { current: number; previous: number }) {
   if (previous === 0 || current === previous) {
-    return <span className="text-base-content/50 text-sm">— ০.০%</span>;
+    return <span className="text-base-content/50 text-sm">০.০%</span>;
   }
 
   const percent = ((current - previous) / previous) * 100;

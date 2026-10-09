@@ -10,7 +10,7 @@ export function CategoryNav({ categories }: { categories: Category[] }) {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="পণ্যের ধরন" className="border-t border-base-300">
+    <nav aria-label="পণ্যের ধরন" className="border-base-300 border-t">
       <ul className="scrollbar-hidden -mx-4 flex gap-1 overflow-x-auto px-4 py-2 sm:mx-0 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0">
         {categories.map((category) => {
           const href = routes.category(category.slug);

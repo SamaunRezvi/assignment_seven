@@ -33,7 +33,10 @@ async function requestOnce<T>(baseUrl: string, path: string, schema: ZodType<T>)
 
   const parsed = schema.safeParse(payload);
   if (!parsed.success) {
-    throw new ApiError("invalid-response", { status: response.status, cause: parsed.error });
+    throw new ApiError("invalid-response", {
+      status: response.status,
+      cause: parsed.error,
+    });
   }
   return parsed.data;
 }

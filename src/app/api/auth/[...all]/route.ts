@@ -15,7 +15,10 @@ function handle(method: Method) {
         error instanceof Error ? error.message : "unknown error",
       );
       return Response.json(
-        { code: "AUTH_UNAVAILABLE", message: "Authentication is temporarily unavailable" },
+        {
+          code: "AUTH_UNAVAILABLE",
+          message: "Authentication is temporarily unavailable",
+        },
         { status: 503, headers: { "Cache-Control": "no-store" } },
       );
     }

@@ -6,7 +6,12 @@ import toast from "react-hot-toast";
 import { routes } from "@/config/site";
 import { authClient } from "@/lib/auth/auth-client";
 import { NETWORK_ERROR_MESSAGE, getAuthErrorMessage } from "@/lib/auth/errors";
-import { getFieldErrors, signUpSchema, type FieldErrors, type SignUpInput } from "@/lib/validation/auth";
+import {
+  getFieldErrors,
+  signUpSchema,
+  type FieldErrors,
+  type SignUpInput,
+} from "@/lib/validation/auth";
 import { getSafeRedirect } from "@/lib/validation/redirect";
 import { FormField } from "./form-field";
 
@@ -40,7 +45,10 @@ export function SignUpForm({ callbackUrl }: { callbackUrl?: string | null }) {
     try {
       const { error } = await authClient.signUp.email(parsed.data);
       if (error) {
-        const message = getAuthErrorMessage(error, "অ্যাকাউন্ট তৈরি করা যায়নি। আবার চেষ্টা করুন।");
+        const message = getAuthErrorMessage(
+          error,
+          "অ্যাকাউন্ট তৈরি করা যায়নি। আবার চেষ্টা করুন।",
+        );
         setFormError(message);
         toast.error(message);
         return;

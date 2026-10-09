@@ -22,7 +22,8 @@ function TickerItem({ product }: { product: Product }) {
         {formatPrice(product.today)}/{formatShortUnit(product.unit)}
       </span>
       <span className={cn("font-semibold", tones[change.dir])}>
-        {arrows[change.dir]} {change.dir === "flat" ? formatPercent(0) : formatPercent(change.pct)}
+        {arrows[change.dir]}{" "}
+        {change.dir === "flat" ? formatPercent(0) : formatPercent(change.pct)}
       </span>
     </li>
   );

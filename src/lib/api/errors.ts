@@ -1,10 +1,5 @@
 export type ApiErrorKind =
-  | "network"
-  | "timeout"
-  | "not-found"
-  | "client"
-  | "server"
-  | "invalid-response";
+  "network" | "timeout" | "not-found" | "client" | "server" | "invalid-response";
 
 const userMessages: Record<ApiErrorKind, string> = {
   network: "ইন্টারনেট সংযোগে সমস্যা হয়েছে। সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।",
@@ -12,7 +7,8 @@ const userMessages: Record<ApiErrorKind, string> = {
   "not-found": "আপনি যে তথ্যটি খুঁজছেন তা পাওয়া যায়নি।",
   client: "অনুরোধটি সঠিক নয়। পেজটি রিফ্রেশ করে আবার চেষ্টা করুন।",
   server: "সার্ভারে সাময়িক সমস্যা হচ্ছে। কিছুক্ষণ পর আবার চেষ্টা করুন।",
-  "invalid-response": "সার্ভার থেকে অপ্রত্যাশিত তথ্য এসেছে। কিছুক্ষণ পর আবার চেষ্টা করুন।",
+  "invalid-response":
+    "সার্ভার থেকে অপ্রত্যাশিত তথ্য এসেছে। কিছুক্ষণ পর আবার চেষ্টা করুন।",
 };
 
 export class ApiError extends Error {

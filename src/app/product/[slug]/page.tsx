@@ -30,7 +30,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
   } catch (error) {
     if (!isApiError(error)) throw error;
     console.error(`[product:${slug}] Failed to load data`, error.kind);
-    return <DataLoadError message={getUserMessage(error)} retryable={error.isRetryable} />;
+    return (
+      <DataLoadError message={getUserMessage(error)} retryable={error.isRetryable} />
+    );
   }
 
   if (!product) notFound();
@@ -40,7 +42,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <Container className="space-y-10 py-8">
       <nav aria-label="পেজ নেভিগেশন">
-        <Link href={routes.home} className="link link-hover text-primary text-sm font-medium">
+        <Link
+          href={routes.home}
+          className="link link-hover text-primary text-sm font-medium"
+        >
           ← হোম পেজে ফিরে যান
         </Link>
       </nav>

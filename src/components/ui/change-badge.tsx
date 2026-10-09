@@ -16,7 +16,13 @@ const labels = {
   flat: "দাম অপরিবর্তিত",
 } as const;
 
-export function ChangeBadge({ change, className }: { change: PriceChange; className?: string }) {
+export function ChangeBadge({
+  change,
+  className,
+}: {
+  change: PriceChange;
+  className?: string;
+}) {
   return (
     <span
       className={cn(

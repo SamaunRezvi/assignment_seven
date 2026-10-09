@@ -11,8 +11,8 @@ export function MarketPrices({ markets }: { markets: MarketPrice[] }) {
         বাজারভিত্তিক আজকের দাম
       </h2>
       <p className="text-base-content/70 mb-4">
-        {formatNumber(groups.length)}টি বিভাগের {formatNumber(markets.length)}টি বাজারের সর্বনিম্ন ও
-        সর্বোচ্চ দাম।
+        {formatNumber(groups.length)}টি বিভাগের {formatNumber(markets.length)}টি বাজারের
+        সর্বনিম্ন ও সর্বোচ্চ দাম।
       </p>
 
       <div className="grid gap-4 md:grid-cols-2">

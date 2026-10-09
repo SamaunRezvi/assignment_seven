@@ -38,7 +38,9 @@ export default async function ProfilePage() {
             </div>
             <div>
               <dt className="text-base-content/60 text-sm">যোগ দিয়েছেন</dt>
-              <dd className="font-medium">{joinedFormatter.format(new Date(user.createdAt))}</dd>
+              <dd className="font-medium">
+                {joinedFormatter.format(new Date(user.createdAt))}
+              </dd>
             </div>
           </dl>
 

@@ -55,7 +55,11 @@ export async function HomeContent() {
           <ProductGrid products={fallers} />
         </section>
 
-        <section id={siteConfig.allProductsAnchor} aria-labelledby="all-products" className="scroll-mt-4">
+        <section
+          id={siteConfig.allProductsAnchor}
+          aria-labelledby="all-products"
+          className="scroll-mt-4"
+        >
           <SectionHeading id="all-products" title="সব পণ্য" />
           <SortableProductGrid
             products={products}

@@ -31,7 +31,10 @@ export function AuthCard({ title, description, children, footer }: AuthCardProps
 
 export function AuthDivider() {
   return (
-    <div className="text-base-content/50 flex items-center gap-3 text-sm" role="separator">
+    <div
+      className="text-base-content/50 flex items-center gap-3 text-sm"
+      role="separator"
+    >
       <span className="bg-base-300 h-px flex-1" />
       অথবা
       <span className="bg-base-300 h-px flex-1" />

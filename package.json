@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "auth:migrate": "npx @better-auth/cli migrate --config scripts/auth.config.ts -y"
+    "auth:migrate": "npx @better-auth/cli migrate --config scripts/auth.config.ts -y",
+    "format": "prettier --write .",
+    "audit:prod": "npm audit --omit=dev"
   },
   "dependencies": {
     "better-auth": "^1.7.7",

@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { routes } from "@/config/site";
-import { formatNumber, formatPrice, formatShortUnit, formatUnit } from "@/lib/format/bengali";
+import {
+  formatNumber,
+  formatPrice,
+  formatShortUnit,
+  formatUnit,
+} from "@/lib/format/bengali";
 import { ChangeBadge } from "@/components/ui/change-badge";
 import type { Product } from "@/types/product";
 
@@ -18,8 +23,9 @@ export function ProductSummary({ product }: { product: Product }) {
           <div className="min-w-0 flex-1 space-y-2">
             <h1 className="text-2xl font-bold sm:text-4xl">{product.nameBn}</h1>
             <p className="text-base-content/70">
-              {formatNumber(product.markets.length)}টি বাজারের তথ্য অনুযায়ী {product.nameBn} এর আজকের
-              দাম {formatPrice(product.today)}, {formatUnit(product.unit)}।
+              {formatNumber(product.markets.length)}টি বাজারের তথ্য অনুযায়ী{" "}
+              {product.nameBn} এর আজকের দাম {formatPrice(product.today)},{" "}
+              {formatUnit(product.unit)}।
             </p>
             <ul className="flex flex-wrap gap-2 pt-1">
               <li>
@@ -41,7 +47,9 @@ export function ProductSummary({ product }: { product: Product }) {
           <div className="border-base-300 flex items-center justify-between gap-4 border-t border-dashed pt-4 sm:flex-col sm:items-end sm:border-t-0 sm:border-l sm:pt-0 sm:pl-6">
             <div className="sm:text-right">
               <p className="text-base-content/60 text-sm">আজকের দাম</p>
-              <p className="text-primary text-3xl font-bold">{formatPrice(product.today)}</p>
+              <p className="text-primary text-3xl font-bold">
+                {formatPrice(product.today)}
+              </p>
               <p className="text-base-content/60 text-xs">
                 {formatUnit(product.unit)} ({formatShortUnit(product.unit)})
               </p>

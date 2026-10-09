@@ -7,7 +7,12 @@ import toast from "react-hot-toast";
 import { routes } from "@/config/site";
 import { authClient } from "@/lib/auth/auth-client";
 import { NETWORK_ERROR_MESSAGE, getAuthErrorMessage } from "@/lib/auth/errors";
-import { getFieldErrors, updateNameSchema, type FieldErrors, type UpdateNameInput } from "@/lib/validation/auth";
+import {
+  getFieldErrors,
+  updateNameSchema,
+  type FieldErrors,
+  type UpdateNameInput,
+} from "@/lib/validation/auth";
 import { FormField } from "./form-field";
 
 export function UpdateProfileForm({ currentName }: { currentName: string }) {
@@ -37,7 +42,10 @@ export function UpdateProfileForm({ currentName }: { currentName: string }) {
     try {
       const { error } = await authClient.updateUser({ name: parsed.data.name });
       if (error) {
-        const message = getAuthErrorMessage(error, "তথ্য আপডেট করা যায়নি। আবার চেষ্টা করুন।");
+        const message = getAuthErrorMessage(
+          error,
+          "তথ্য আপডেট করা যায়নি। আবার চেষ্টা করুন।",
+        );
         setFormError(message);
         toast.error(message);
         return;

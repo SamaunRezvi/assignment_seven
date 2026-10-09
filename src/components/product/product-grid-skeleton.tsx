@@ -25,7 +25,11 @@ export function ProductCardSkeleton() {
 
 export function ProductGridSkeleton({ count = 8 }: { count?: number }) {
   return (
-    <div className={productGridClassName} role="status" aria-label="পণ্যের তালিকা লোড হচ্ছে">
+    <div
+      className={productGridClassName}
+      role="status"
+      aria-label="পণ্যের তালিকা লোড হচ্ছে"
+    >
       {Array.from({ length: count }, (_, index) => (
         <ProductCardSkeleton key={index} />
       ))}
