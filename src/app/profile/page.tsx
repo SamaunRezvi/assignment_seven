@@ -31,7 +31,7 @@ export default async function ProfilePage() {
             <p className="text-base-content/70 break-all">{user.email}</p>
           </div>
 
-          <dl className="border-base-300 grid w-full grid-cols-1 gap-3 border-t border-dashed pt-5 text-left sm:grid-cols-2">
+          <dl className="border-base-300 grid w-full grid-cols-1 gap-3 border-t border-dashed pt-5 text-center sm:grid-cols-2">
             <div>
               <dt className="text-base-content/60 text-sm">নাম</dt>
               <dd className="font-medium">{user.name}</dd>
