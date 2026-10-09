@@ -56,11 +56,11 @@ export function UserMenu({ name, email }: { name: string; email: string }) {
       >
         <span
           aria-hidden="true"
-          className="bg-primary text-primary-content flex h-6 min-w-9 shrink-0 items-center justify-center rounded-full px-2 text-sm font-bold"
+          className="bg-primary text-primary-content flex h-4 min-w-6 shrink-0 items-center justify-center rounded-full px-1 text-xs font-bold sm:h-6 sm:min-w-9 sm:px-2 sm:text-sm"
         >
           {name.trim().charAt(0).toUpperCase()}
         </span>
-        <span className="min-w-0 truncate">{name}</span>
+        <span className="hidden min-w-0 truncate sm:inline">{name}</span>
         <span aria-hidden="true" className="text-base-content/60 shrink-0 text-xs">
           ▾
         </span>
