@@ -20,7 +20,9 @@ export async function HomeContent() {
     console.error("[home] Failed to load products", error);
     return (
       <>
-        <Hero />
+        <Container className="py-6">
+          <Hero />
+        </Container>
         <DataLoadError
           message={getUserMessage(error)}
           retryable={!isApiError(error) || error.isRetryable}
@@ -34,39 +36,37 @@ export async function HomeContent() {
   const total = formatNumber(products.length);
 
   return (
-    <>
+    <Container className="flex flex-col gap-10 py-6">
       <Hero />
-      <Container className="space-y-14 py-10">
-        <section aria-labelledby="risers">
-          <SectionHeading
-            id="risers"
-            title="আজ দাম বেড়েছে"
-            marker={{ symbol: "▲", tone: "up" }}
-          />
-          <ProductGrid products={risers} />
-        </section>
+      <section aria-labelledby="risers">
+        <SectionHeading
+          id="risers"
+          title="আজ দাম বেড়েছে"
+          marker={{ symbol: "▲", tone: "up" }}
+        />
+        <ProductGrid products={risers} />
+      </section>
 
-        <section aria-labelledby="fallers">
-          <SectionHeading
-            id="fallers"
-            title="আজ দাম কমেছে"
-            marker={{ symbol: "▼", tone: "down" }}
-          />
-          <ProductGrid products={fallers} />
-        </section>
+      <section aria-labelledby="fallers">
+        <SectionHeading
+          id="fallers"
+          title="আজ দাম কমেছে"
+          marker={{ symbol: "▼", tone: "down" }}
+        />
+        <ProductGrid products={fallers} />
+      </section>
 
-        <section
-          id={siteConfig.allProductsAnchor}
-          aria-labelledby="all-products"
-          className="scroll-mt-4"
-        >
-          <SectionHeading id="all-products" title="সব পণ্য" />
-          <SortableProductGrid
-            products={products}
-            summary={`মোট ${total}টি পণ্য দেখানো হচ্ছে`}
-          />
-        </section>
-      </Container>
-    </>
+      <section
+        id={siteConfig.allProductsAnchor}
+        aria-labelledby="all-products"
+        className="scroll-mt-32"
+      >
+        <SectionHeading id="all-products" title="সব পণ্য" />
+        <SortableProductGrid
+          products={products}
+          summary={`মোট ${total}টি পণ্য দেখানো হচ্ছে`}
+        />
+      </section>
+    </Container>
   );
 }

@@ -51,16 +51,13 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   if (!category) notFound();
 
   return (
-    <Container className="py-8">
-      <header className="mb-6 flex items-center gap-4">
-        <span
-          aria-hidden="true"
-          className="bg-base-100 border-base-300 flex size-14 items-center justify-center rounded-2xl border text-3xl"
-        >
+    <Container className="flex flex-col gap-6 py-6">
+      <header className="border-base-300 bg-base-100 flex items-center gap-3 rounded-2xl border p-5">
+        <span aria-hidden="true" className="text-4xl">
           {category.icon}
         </span>
         <div>
-          <h1 className="text-3xl font-bold">{category.nameBn}</h1>
+          <h1 className="text-2xl font-bold">{category.nameBn}</h1>
           <Suspense fallback={<div className="skeleton mt-1 h-4 w-56" />}>
             <CategorySubtitle slug={category.slug} />
           </Suspense>

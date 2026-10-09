@@ -16,9 +16,11 @@ export function SortableProductGrid({ products, summary }: SortableProductGridPr
   const sorted = useMemo(() => sortProducts(products, order), [products, order]);
 
   return (
-    <div className="space-y-5">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-base-content/70 text-sm">{summary}</p>
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className="text-base-content/70 text-sm" aria-live="polite">
+          {summary}
+        </p>
         <SortSelect value={order} onChange={setOrder} />
       </div>
       <ProductGrid products={sorted} />

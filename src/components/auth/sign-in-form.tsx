@@ -63,7 +63,7 @@ export function SignInForm({ callbackUrl }: { callbackUrl?: string | null }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-4">
+    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
       <FormField
         label="ইমেইল"
         name="email"
@@ -80,7 +80,7 @@ export function SignInForm({ callbackUrl }: { callbackUrl?: string | null }) {
         name="password"
         type="password"
         autoComplete="current-password"
-        placeholder="••••••••"
+        placeholder="কমপক্ষে ৮ অক্ষর"
         error={errors.password}
         disabled={isPending}
         required

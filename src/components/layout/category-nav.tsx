@@ -10,8 +10,8 @@ export function CategoryNav({ categories }: { categories: Category[] }) {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="পণ্যের ধরন" className="border-base-300 border-t">
-      <ul className="scrollbar-hidden -mx-4 flex gap-1 overflow-x-auto px-4 py-2 sm:mx-0 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0">
+    <nav aria-label="পণ্য ক্যাটাগরি" className="mx-auto w-full max-w-6xl px-4">
+      <ul className="flex items-center gap-1 overflow-x-auto py-2 text-sm">
         {categories.map((category) => {
           const href = routes.category(category.slug);
           const isActive = pathname === href;
@@ -22,10 +22,8 @@ export function CategoryNav({ categories }: { categories: Category[] }) {
                 href={href}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
-                  isActive
-                    ? "bg-primary text-primary-content shadow-sm"
-                    : "text-base-content/75 hover:bg-primary/10 hover:text-primary",
+                  "btn btn-sm whitespace-nowrap",
+                  isActive ? "btn-primary" : "btn-ghost",
                 )}
               >
                 <span aria-hidden="true">{category.icon}</span>

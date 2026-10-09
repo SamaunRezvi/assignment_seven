@@ -31,3 +31,6 @@ npm-debug.log*
 Thumbs.db
 .vscode/
 .idea/
+
+# Local screenshots and reference inspection files
+/artifacts/design-review/

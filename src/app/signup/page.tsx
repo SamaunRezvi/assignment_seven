@@ -27,11 +27,11 @@ export default async function SignUpPage({ searchParams }: SignUpPageProps) {
 
   return (
     <AuthCard
-      title="রেজিস্ট্রেশন"
-      description="নতুন অ্যাকাউন্ট খুলে বাজারের বিস্তারিত দাম দেখুন।"
+      title="অ্যাকাউন্ট তৈরি করুন"
+      description="বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।"
       footer={
         <>
-          আগেই অ্যাকাউন্ট আছে?{" "}
+          অ্যাকাউন্ট আছে?{" "}
           <Link href={signInHref} className="link link-primary font-medium">
             সাইন ইন করুন
           </Link>

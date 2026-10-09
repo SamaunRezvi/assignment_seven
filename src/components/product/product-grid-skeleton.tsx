@@ -3,15 +3,15 @@ import { productGridClassName } from "./product-grid";
 export function ProductCardSkeleton() {
   return (
     <div className="card border-base-300 bg-base-100 border">
-      <div className="card-body gap-3 p-4 sm:p-5">
+      <div className="card-body gap-3 p-4">
         <div className="flex items-start gap-3">
           <div className="skeleton size-12 shrink-0 rounded-xl" />
           <div className="flex-1 space-y-2">
-            <div className="skeleton h-5 w-3/4" />
-            <div className="skeleton h-4 w-1/3" />
+            <div className="skeleton h-4 w-28" />
+            <div className="skeleton h-3 w-16" />
           </div>
         </div>
-        <div className="border-base-300 flex items-end justify-between border-t border-dashed pt-3">
+        <div className="flex items-end justify-between">
           <div className="space-y-2">
             <div className="skeleton h-3 w-16" />
             <div className="skeleton h-6 w-24" />

@@ -17,7 +17,7 @@ export async function CategorySubtitle({ slug }: { slug: string }) {
   }
 
   return (
-    <p className="text-base-content/70">
+    <p className="text-base-content/70 text-sm">
       {formatNumber(count)}টি পণ্যের আজকের দাম ও পরিবর্তন
     </p>
   );

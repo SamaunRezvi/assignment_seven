@@ -3,9 +3,9 @@ import { cn } from "@/lib/utils";
 import type { PriceChange } from "@/types/product";
 
 const styles = {
-  up: "bg-success/10 text-success",
-  down: "bg-error/10 text-error",
-  flat: "bg-base-300 text-base-content/60",
+  up: "price-up",
+  down: "price-down",
+  flat: "price-flat",
 } as const;
 
 const symbols = { up: "▲", down: "▼", flat: "—" } as const;
@@ -26,7 +26,7 @@ export function ChangeBadge({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold whitespace-nowrap",
+        "bg-base-200 inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold whitespace-nowrap",
         styles[change.dir],
         className,
       )}

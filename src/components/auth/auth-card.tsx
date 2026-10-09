@@ -11,33 +11,32 @@ interface AuthCardProps {
 
 export function AuthCard({ title, description, children, footer }: AuthCardProps) {
   return (
-    <Container className="max-w-md py-10">
-      <div className="card border-base-300 bg-base-100 border shadow-sm">
-        <div className="card-body gap-5 p-6 sm:p-8">
-          <div className="space-y-1.5">
-            <h1 className="text-3xl font-bold">{title}</h1>
-            <p className="text-base-content/70">{description}</p>
-            <Link href={routes.home} className="link link-hover text-primary text-sm">
-              ← হোম পেজে ফিরে যান
-            </Link>
+    <Container className="flex max-w-md flex-col gap-6 py-10">
+      <header className="text-center">
+        <h1 className="text-2xl font-bold">{title}</h1>
+        <p className="text-base-content/70 mt-1 text-sm">{description}</p>
+      </header>
+      <div className="card border-base-300 bg-base-100 border">
+        <div className="card-body">
+          <div className="flex flex-col gap-4">
+            {children}
+            <p className="text-base-content/70 text-center text-sm">{footer}</p>
           </div>
-          {children}
-          <p className="text-base-content/70 text-center text-sm">{footer}</p>
         </div>
       </div>
+      <p className="text-base-content/60 text-center text-sm">
+        <Link href={routes.home} className="link">
+          ← হোম পেজে ফিরে যান
+        </Link>
+      </p>
     </Container>
   );
 }
 
 export function AuthDivider() {
   return (
-    <div
-      className="text-base-content/50 flex items-center gap-3 text-sm"
-      role="separator"
-    >
-      <span className="bg-base-300 h-px flex-1" />
+    <div className="divider my-0 text-xs" role="separator">
       অথবা
-      <span className="bg-base-300 h-px flex-1" />
     </div>
   );
 }
