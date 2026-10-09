@@ -117,7 +117,7 @@ npm run dev
 
 ## ⚠️ Error Handling
 
-Product data comes from two interchangeable public APIs. Requests time out after 6 seconds. If one API is down, rate limited or returns bad data, the other one is used automatically, and the failing one is skipped for a minute so the site stays fast. Errors are typed (network, timeout, not found, rate limited, server, invalid response). Each one is shown as a clear Bangla message with a retry action. Unknown routes, invalid categories and unknown products render a friendly 404 with a link back to the home page.
+Product data comes from two interchangeable public APIs. Requests time out after 6 seconds. If one API is down, rate limited or returns bad data, the other one is used automatically, and the failing one is skipped for a minute so the site stays fast. If both APIs are unavailable, the app serves a bundled snapshot of the last known prices from `src/data`, so the site never goes blank during an outage or a rate limit. Errors are typed (network, timeout, not found, rate limited, server, invalid response). Each one is shown as a clear Bangla message with a retry action. Unknown routes, invalid categories and unknown products render a friendly 404 with a link back to the home page.
 
 ## ☁️ Deployment
 
