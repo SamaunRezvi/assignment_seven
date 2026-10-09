@@ -12,8 +12,8 @@ export const getSession = cache(async () => {
   try {
     return await getAuth().api.getSession({ headers: requestHeaders });
   } catch (error) {
-    console.error(
-      "[auth] Failed to resolve session:",
+    console.warn(
+      "[auth] Could not resolve session, treating visitor as signed out:",
       error instanceof Error ? error.message : "unknown error",
     );
     return null;
