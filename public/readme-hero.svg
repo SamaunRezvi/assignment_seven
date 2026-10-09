@@ -1,0 +1,96 @@
+<svg width="1120" height="420" viewBox="0 0 1120 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title description">
+  <title id="title">BazarDor - know today's prices, shop with confidence</title>
+  <desc id="description">An animated isometric market basket with fresh produce and floating price cards in BazarDor's green palette.</desc>
+  <defs>
+    <linearGradient id="background" x1="30" y1="20" x2="1100" y2="420" gradientUnits="userSpaceOnUse"><stop stop-color="#10271F"/><stop offset="1" stop-color="#071810"/></linearGradient>
+    <linearGradient id="mint" x1="650" y1="180" x2="980" y2="335" gradientUnits="userSpaceOnUse"><stop stop-color="#99F6C4"/><stop offset="1" stop-color="#15A466"/></linearGradient>
+    <linearGradient id="basket" x1="742" y1="245" x2="846" y2="350" gradientUnits="userSpaceOnUse"><stop stop-color="#DEAA57"/><stop offset="1" stop-color="#A26B29"/></linearGradient>
+    <linearGradient id="basketSide" x1="842" y1="255" x2="949" y2="330" gradientUnits="userSpaceOnUse"><stop stop-color="#946023"/><stop offset="1" stop-color="#553A1D"/></linearGradient>
+    <radialGradient id="tomato" cx=".32" cy=".25" r=".85"><stop stop-color="#FFAE90"/><stop offset=".4" stop-color="#F86D56"/><stop offset="1" stop-color="#C93F38"/></radialGradient>
+    <radialGradient id="green" cx=".3" cy=".25" r=".85"><stop stop-color="#C7FAA6"/><stop offset=".4" stop-color="#64D47B"/><stop offset="1" stop-color="#198A50"/></radialGradient>
+    <radialGradient id="orange" cx=".25" cy=".25" r=".8"><stop stop-color="#FFE9A6"/><stop offset=".4" stop-color="#F7B849"/><stop offset="1" stop-color="#D78121"/></radialGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#214C39"/><stop offset="1" stop-color="#122F24"/></linearGradient>
+    <filter id="ambient" x="-50%" y="-100%" width="200%" height="300%"><feGaussianBlur stdDeviation="16"/></filter>
+    <filter id="cardShadow" x="-30%" y="-50%" width="170%" height="220%"><feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#020C07" flood-opacity=".5"/></filter>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .basket-float { animation: basket-float 5s ease-in-out infinite; transform-origin: 828px 265px; }
+      .card-float { animation: card-float 6s ease-in-out infinite; }
+      .card-float-later { animation: card-float 6s ease-in-out -3s infinite; }
+      .pulse { animation: pulse 3s ease-in-out infinite; }
+      @keyframes basket-float { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-10px) rotate(1deg); } }
+      @keyframes card-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+      @keyframes pulse { 0%,100% { opacity: .4; } 50% { opacity: .85; } }
+      @media (prefers-reduced-motion: reduce) { .basket-float, .card-float, .card-float-later, .pulse { animation: none; } }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1118" height="418" rx="28" fill="url(#background)" stroke="#2E5542" stroke-width="2"/>
+  <path d="M58 93H1062" stroke="#294A39"/>
+  <g opacity=".26" stroke="#3F785B">
+    <path d="M621 330 817 245 1050 336M652 343 844 259 1076 350M688 358 877 274 1085 365M725 374 913 289 1085 381"/>
+    <path d="M660 313 851 394M700 296 890 377M740 279 930 360M780 262 970 343M820 245 1010 326"/>
+  </g>
+  <g transform="translate(58 34)">
+    <rect width="38" height="38" rx="11" fill="#19A463"/>
+    <path d="m8 11 4 0 3 14 13 0 3-10H13M17 29h.1M27 29h.1" stroke="#E5FFF0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="52" y="27" fill="#F0FFF5" font-size="24" font-weight="700">BazarDor</text>
+    <circle cx="806" cy="20" r="4" fill="#87F3B2" class="pulse"/>
+    <text x="823" y="24" fill="#A6D4B8" font-size="10" letter-spacing="2.3">DAILY MARKET PRICES</text>
+  </g>
+  <g transform="translate(58 130)">
+    <text fill="#92EAB7" font-size="11" letter-spacing="3">YOUR EVERYDAY MARKET, AT A GLANCE.</text>
+    <text y="68" fill="#F2FFF7" font-size="49" font-weight="800">Know today's prices.</text>
+    <text y="125" fill="#8CF0B5" font-size="44" font-weight="800">Shop with confidence.</text>
+    <text y="172" fill="#B4CABC" font-size="16">Browse essentials. Compare markets.</text>
+    <text y="197" fill="#B4CABC" font-size="16">Follow price changes, all in Bangla.</text>
+    <g transform="translate(0 221)">
+      <rect width="115" height="32" rx="8" fill="#8CF0B5"/><text x="16" y="21" fill="#0D2B1B" font-size="11" font-weight="700" letter-spacing=".8">DAILY PRICES</text>
+      <rect x="127" width="126" height="32" rx="8" fill="#1A3729" stroke="#365B44"/><text x="142" y="21" fill="#D8F4E2" font-size="11" font-weight="700" letter-spacing=".8">8 CATEGORIES</text>
+      <rect x="265" width="122" height="32" rx="8" fill="#1A3729" stroke="#365B44"/><text x="281" y="21" fill="#D8F4E2" font-size="11" font-weight="700" letter-spacing=".8">12 MARKETS</text>
+    </g>
+  </g>
+  <ellipse cx="834" cy="354" rx="160" ry="22" fill="#36C57B" opacity=".22" filter="url(#ambient)" class="pulse"/>
+  <path d="m655 299 168-69 186 72-170 76Z" fill="#1E4431" stroke="#4D956B"/>
+  <path d="m655 299 184 79v16l-184-79Z" fill="#122D20" stroke="#345B43"/>
+  <path d="m839 378 170-76v17l-170 75Z" fill="#0C2519" stroke="#345B43"/>
+  <path d="m696 301 128-51 143 53-128 57Z" fill="url(#mint)" opacity=".26" stroke="#80D7A3"/>
+  <g class="basket-float">
+    <path d="M750 219q-8-73 71-82 82 1 93 81" stroke="#E8BB79" stroke-width="12" stroke-linecap="round"/>
+    <path d="M750 219q-8-73 71-82 82 1 93 81" stroke="#FFDA9D" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="840" cy="296" rx="100" ry="20" fill="#04130B" opacity=".35"/>
+    <ellipse cx="854" cy="204" rx="44" ry="48" fill="url(#green)"/>
+    <path d="M855 161q2-18 17-27M854 161q-11-13-23-13" stroke="#388D4F" stroke-width="7" stroke-linecap="round"/>
+    <path d="M828 184q8-10 17-9" stroke="#D7FBB4" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+    <circle cx="787" cy="224" r="35" fill="url(#tomato)"/>
+    <path d="m789 186-5 12-12-4 11 10 7-8 9 4-7-12" fill="#418D42"/>
+    <path d="M766 215q2-9 9-10" stroke="#FFD7C0" stroke-width="5" stroke-linecap="round" opacity=".6"/>
+    <ellipse cx="917" cy="240" rx="27" ry="29" fill="url(#orange)"/>
+    <path d="M917 213q1-10 10-12" stroke="#6CAA4E" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="834" cy="246" rx="25" ry="23" fill="url(#orange)"/>
+    <ellipse cx="751" cy="248" rx="24" ry="28" fill="#9370C6"/>
+    <ellipse cx="744" cy="239" rx="6" ry="10" fill="#CCB3E9" opacity=".55"/>
+    <path d="m751 220 6-9 7 10-10 6" fill="#77B364"/>
+    <path d="m729 252 114 28 106-32-18 65-87 36-100-33Z" fill="url(#basket)" stroke="#C9964C"/>
+    <path d="m843 280 106-32-18 65-87 36Z" fill="url(#basketSide)"/>
+    <path d="m728 251 114 27 109-32-3 14-105 32-111-29Z" fill="#F3C27E"/>
+    <path d="m732 263 111 29v57" stroke="#D8A14D" stroke-width="3"/>
+    <path d="m756 271 6 49m20-43 4 51m21-45 1 54m60-53-2 49m25-57-6 48m28-57-7 47" stroke="#744B25" stroke-width="4" opacity=".48"/>
+    <path d="m746 289 98 30 92-33M749 303l95 31 88-34" stroke="#F3C27E" stroke-width="2" opacity=".4"/>
+  </g>
+  <g class="card-float" filter="url(#cardShadow)">
+    <g transform="translate(646 115) rotate(-6)">
+      <rect width="139" height="83" rx="14" fill="url(#card)" stroke="#568469"/>
+      <text x="15" y="24" fill="#BBD5C6" font-size="10" letter-spacing="1.5">PRICE WATCH</text>
+      <text x="15" y="53" fill="#F1FFF6" font-size="24" font-weight="700">33</text><text x="52" y="53" fill="#BBD5C6" font-size="11">products</text>
+      <path d="m17 68 18-4 15 3 18-8 18 2 18-7 18 1" stroke="#8CF0B5" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </g>
+  <g class="card-float-later" filter="url(#cardShadow)">
+    <g transform="translate(921 107) rotate(7)">
+      <rect width="132" height="86" rx="14" fill="url(#card)" stroke="#568469"/>
+      <text x="14" y="25" fill="#BBD5C6" font-size="10" letter-spacing="1.5">DAILY MOVERS</text>
+      <path d="m15 44 6-8 6 8Z" fill="#FF9B87"/><text x="35" y="44" fill="#FFD3C9" font-size="12">Price rises</text>
+      <path d="m15 61 6 8 6-8Z" fill="#8CF0B5"/><text x="35" y="70" fill="#B7F2CE" font-size="12">Price falls</text>
+    </g>
+  </g>
+</svg>

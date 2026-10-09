@@ -1,66 +1,233 @@
-# 🛒 বাজার দর | BazarDor
+<a id="top"></a>
 
-Daily prices of essential commodities in Bangladesh, at a glance.
+<div align="center">
 
-BazarDor shows today's retail prices for rice, lentils, oil, vegetables, fish, meat, dairy and spices. Every product comes with its price change, a summary of minimum, maximum and average prices, and a market by market breakdown across divisions. The interface is fully in Bangla, uses Bengali numerals, and works on mobile, tablet and desktop.
+<img src="./public/readme-hero.svg" alt="BazarDor animated 3D market basket and daily price cards" width="1120" />
 
-## ✨ Key Features
+<br />
 
-1. **Live price ticker and daily movers.** An endlessly scrolling ticker shows every price with its ▲ ▼ change, while the home page highlights the top 6 risers and top 6 fallers of the day.
-2. **Browse and sort by category.** Eight category pages share one card design, with a sort control (default, price low to high, price high to low) that compares real numeric values, so Bengali numerals never break the order.
-3. **Detailed, protected product pages.** After signing in, each product shows its summary, minimum, maximum and average price, a comparison with yesterday, last week and last month, and prices from 12 markets grouped by division.
-4. **Secure authentication.** Email and password, Google and GitHub sign in powered by Better Auth, with toast feedback, protected route redirects and safe return URLs.
+<p>
+  <a href="https://assignment-seven-sigma-ten.vercel.app/"><img src="https://img.shields.io/badge/Live_Site-088542?style=for-the-badge&amp;logo=vercel&amp;logoColor=white" alt="Visit BazarDor" height="32" /></a>
+  &nbsp;
+  <a href="#about-the-project"><img src="https://img.shields.io/badge/Overview-18382A?style=for-the-badge" alt="Project overview" height="32" /></a>
+  &nbsp;
+  <a href="#the-experience"><img src="https://img.shields.io/badge/Experience-24513B?style=for-the-badge" alt="Explore the experience" height="32" /></a>
+  &nbsp;
+  <a href="#tech-stack"><img src="https://img.shields.io/badge/Tech_Stack-18382A?style=for-the-badge" alt="View the tech stack" height="32" /></a>
+  &nbsp;
+  <a href="#getting-started"><img src="https://img.shields.io/badge/Get_Started-8CF0B5?style=for-the-badge&amp;logoColor=0D2B1B" alt="Get started locally" height="32" /></a>
+</p>
+
+<h2>Everyday essentials. Clearer decisions.</h2>
+
+<p>Know today's prices. Compare your markets. Plan your next shop.</p>
+
+<p><sub><strong>BANGLA FIRST</strong> &nbsp; · &nbsp; <strong>DAILY PRICE CHANGES</strong> &nbsp; · &nbsp; <strong>MARKET COMPARISONS</strong></sub></p>
+
+</div>
+
+<br />
+
+## About the Project
+
+**বাজার দর (BazarDor) brings Bangladesh's everyday commodity prices into one clear, Bangla-first interface.**
+
+Browse rice, lentils, oil, vegetables, fish, meat, dairy and spices. See today's price,
+follow changes from yesterday and sort essentials by price. Sign in to explore minimum,
+maximum and average prices, historical comparisons and market prices grouped by division.
+
+Built with Next.js and React, the project connects public price data, secure authentication
+and a responsive interface. Bengali numerals have their own font, password fields include
+show/hide controls, and a bundled data snapshot keeps the catalog available when both APIs
+are unreachable.
+
+## Key Features
+
+1. **Live price ticker and daily movers.** A scrolling ticker shows every price with its ▲ ▼ change, and the home page highlights the top 6 risers and top 6 fallers.
+2. **Category browsing with numeric sorting.** Eight category pages share one card design, and the sort control orders real prices correctly, including Bengali numerals.
+3. **Protected product details.** After signing in, each product shows minimum, maximum and average prices, a comparison with earlier days, and prices from 12 markets grouped by division.
+4. **Secure authentication.** Email and password, Google and GitHub sign in with Better Auth, toast feedback, protected route redirects and safe return URLs.
 5. **Profile management.** A My Profile page and an update information form to change the display name.
 
-## 🧰 Technologies Used
+## The Experience
 
-| Purpose        | Technology                                       |
-| -------------- | ------------------------------------------------ |
-| Framework      | Next.js 16 (App Router)                          |
-| Language       | TypeScript                                       |
-| UI             | React 19, Tailwind CSS 4, DaisyUI 5              |
-| Authentication | Better Auth (email and password, Google, GitHub) |
-| Database       | PostgreSQL (Neon) through `pg`                   |
-| Validation     | Zod                                              |
-| Notifications  | react-hot-toast                                  |
-| Tooling        | ESLint, Prettier                                 |
-| Deployment     | Vercel                                           |
+<table>
+<tr>
+<td width="33%" valign="top">
+<sub>01 / EXPLORE</sub>
+<h3>Start with today's market.</h3>
+<p>Watch the scrolling price ticker, review the top six price rises and falls, and browse essentials across eight categories.</p>
+</td>
+<td width="34%" valign="top">
+<sub>02 / COMPARE</sub>
+<h3>Find the price that matters.</h3>
+<p>Sort the catalog by price, then sign in to compare minimum, maximum and average prices across markets and divisions.</p>
+</td>
+<td width="33%" valign="top">
+<sub>03 / UNDERSTAND</sub>
+<h3>See how prices have moved.</h3>
+<p>Compare today's price with yesterday, last week and last month. Keep your account details up to date from your profile.</p>
+</td>
+</tr>
+</table>
 
-## 🗂️ Project Structure
+### Small details that matter
 
+| Detail                | What you see                                                                                       |
+| :-------------------- | :------------------------------------------------------------------------------------------------- |
+| Price ticker          | Prices and percentage changes scroll across the page; hovering pauses the ticker.                  |
+| Daily movers          | The largest six rises and falls appear separately, with green for increases and red for decreases. |
+| Category browsing     | Rice, lentils, oil, vegetables, fish, meat, eggs and dairy, and spices have dedicated pages.       |
+| Numeric sorting       | Default, low-to-high and high-to-low options sort actual prices correctly.                         |
+| Bangla interface      | Labels, dates, units, errors and prices appear in Bangla; Bengali digits use a dedicated font.     |
+| Password visibility   | Each password field has its own accessible eye button; confirmation remains independent.           |
+| Authentication        | Email/password sign-in, plus Google and GitHub when their OAuth credentials are configured.        |
+| Protected details     | Guests go to sign-in and return to their intended page after authentication.                       |
+| Profile management    | View your profile and update your display name.                                                    |
+| Feedback and recovery | Skeletons, localized errors, retries, empty states, toast messages and a custom 404.               |
+| Responsive layout     | Cards, navigation and forms adapt to desktop and mobile screens.                                   |
+
+> **Data coverage:** The bundled snapshot contains 33 products across 8 categories, with 12 market entries per product. It is a fallback dataset, not a guarantee that every displayed price is current.
+
+<br />
+
+## Tech Stack
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=nextjs,react,typescript,tailwind,postgres,vercel&amp;theme=dark" alt="Next.js, React, TypeScript, Tailwind CSS, PostgreSQL and Vercel" />
+
+</div>
+
+<br />
+
+| Technology                 | Responsibility                                                       |
+| :------------------------- | :------------------------------------------------------------------- |
+| Next.js 16                 | App Router, server rendering, route protection and production builds |
+| React 19                   | Components, forms, sorting and password visibility                   |
+| TypeScript                 | Typed products, categories, market data and component contracts      |
+| Tailwind CSS 4 + DaisyUI 5 | Responsive layout, the green theme and shared UI components          |
+| Better Auth                | Email/password authentication, OAuth, sessions and rate limiting     |
+| PostgreSQL + `pg`          | Persistent users, sessions and authentication data                   |
+| Zod                        | API response validation, form validation and environment checks      |
+| react-hot-toast            | Localized success, validation and error feedback                     |
+| BazarDor APIs              | Primary and backup sources for commodity prices                      |
+| Vercel                     | Application hosting                                                  |
+| ESLint + Prettier          | Code checks and formatting                                           |
+
+<details>
+<summary><strong>Explore the application routes</strong></summary>
+
+<br />
+
+| Route                | Purpose                                              | Access         |
+| :------------------- | :--------------------------------------------------- | :------------- |
+| `/`                  | Hero, price ticker, daily movers and product catalog | Public         |
+| `/category/[slug]`   | Category products and sorting                        | Public         |
+| `/product/[slug]`    | Product summary, history and market comparisons      | Signed in      |
+| `/signin`            | Email/password and social sign-in                    | Guest          |
+| `/signup`            | Registration and password confirmation               | Guest          |
+| `/profile`           | Account information                                  | Signed in      |
+| `/profile/update`    | Update your display name                             | Signed in      |
+| `/api/auth/[...all]` | Better Auth request handler                          | Auth endpoints |
+
+Unknown paths and invalid product/category slugs render the custom not-found page.
+
+</details>
+
+<br />
+
+## Under the Hood
+
+Server components load and validate product data. Shared selectors calculate daily
+movers, sort prices and group markets by division. Client components handle sorting,
+form feedback and password visibility; Better Auth owns accounts and sessions.
+
+```mermaid
+flowchart TB
+  primary["Primary BazarDor API"] --> client["API client<br/>Timeouts, validation and caching"]
+  backup["Backup BazarDor API"] --> client
+  snapshot["Bundled snapshot<br/>Used when both APIs fail"] --> client
+  client --> catalog["Home and categories<br/>Ticker, movers and product cards"]
+  catalog --> guard["Session checks<br/>Proxy and server guard"]
+  auth["Better Auth<br/>Email, Google and GitHub"] --> guard
+  database["PostgreSQL<br/>Users and sessions"] --> auth
+  guard --> detail["Product details<br/>History and market prices"]
+  guard --> profile["Profile<br/>View and update name"]
+
+  classDef source fill:#18382A,stroke:#8CF0B5,color:#F2FFF7
+  classDef gate fill:#24513B,stroke:#B5F7CE,color:#FFFFFF,stroke-width:2px
+  classDef view fill:#10271F,stroke:#58B37D,color:#F2FFF7
+  class primary,backup,snapshot,database source
+  class auth,guard gate
+  class client,catalog,detail,profile view
 ```
+
+### Data availability
+
+| Stage            | Behavior                                                                                                                                   |
+| :--------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| Primary API      | Requests time out after 6 seconds; successful responses use a 30-minute revalidation interval.                                             |
+| Backup API       | Network errors, timeouts, rate limits, server errors and invalid responses trigger failover. Unhealthy endpoints get a 60-second cooldown. |
+| Bundled snapshot | When both APIs fail, supported catalog requests use validated data from `src/data`.                                                        |
+| Recovery         | After the cooldown, later requests can try the APIs again.                                                                                 |
+
+### Authentication and security
+
+- Email/password registration validates name, email and password; the form also checks password confirmation.
+- Registration and display-name updates use Zod validation on the server.
+- Google and GitHub OAuth are enabled when their credential pairs are configured.
+- Sessions use database persistence, `HttpOnly` cookies and secure cookies in production.
+- Product and profile routes check authentication in both the proxy and server page.
+- Safe callback paths keep post-login redirects within the application.
+- Database-backed rate limits protect sign-in, sign-up and profile updates.
+- A nonce-based Content Security Policy and security headers protect the application.
+- Secrets stay in ignored environment files.
+
+<details>
+<summary><strong>Project structure</strong></summary>
+
+```text
 src/
-  app/                 Routes, layouts, loading, error and 404 states
-    api/auth/          Better Auth route handler
-    category/[slug]/   Category listing
-    product/[slug]/    Protected product details
-    profile/           My Profile and update information
-    signin/ signup/    Authentication pages
+  app/
+    page.tsx                  # Home and daily movers
+    category/[slug]/          # Category listings
+    product/[slug]/           # Protected product details
+    signin/ signup/           # Authentication pages
+    profile/                  # Profile and name updates
+    api/auth/[...all]/        # Better Auth handler
+    globals.css               # Theme and Bengali numeral font
   components/
-    auth/              Forms, social buttons, auth card
-    home/              Hero and home sections
-    layout/            Header, category navigation, ticker, footer
-    product/           Cards, grid, sorting, detail sections
-    ui/                Shared primitives and error states
-  config/              Site constants and fallback categories
+    auth/                     # Forms and password eye controls
+    home/                     # Hero and home sections
+    layout/                   # Header, ticker and footer
+    product/                  # Cards, sorting and comparisons
+    ui/                       # Shared UI and error states
+  config/                     # Routes, site and category constants
+  data/                       # Bundled product/category snapshots
   lib/
-    api/               Validated API client, typed errors, data access
-    auth/              Better Auth setup, session helpers, error mapping
-    format/            Bengali number, price and date formatting
-    products/          Selectors for movers, sorting and summaries
-    validation/        Zod schemas and redirect safety
-  proxy.ts             CSP nonce and protected route redirects
-scripts/               Better Auth schema configuration
+    api/                      # API validation, failover and fallback
+    auth/                     # Authentication and session helpers
+    format/                   # Bengali prices, numbers and dates
+    products/                 # Sorting, movers and market grouping
+    validation/               # Form schemas and safe redirects
+  proxy.ts                    # CSP and optimistic session guard
+public/
+  readme-hero.svg              # Animated 3D README banner
+  fonts/                      # Bengali numeral font and license
+scripts/
+  auth.config.ts              # Authentication migration configuration
+docs/
+  repository-description.txt  # Copy-ready GitHub About description
 ```
 
-## 🚀 Getting Started
+</details>
 
-### Prerequisites
+<br />
 
-- Node.js 20.9 or newer
-- A PostgreSQL database (a free Neon project works well)
+## Getting Started
 
-### Setup
+Use Node.js 20.9 or newer, npm and a PostgreSQL database. Neon is one supported option.
 
 ```bash
 git clone https://github.com/SamaunRezvi/assignment_seven.git
@@ -69,75 +236,97 @@ npm install
 cp .env.example .env
 ```
 
-Fill in `.env`:
+On Windows PowerShell, use `Copy-Item .env.example .env` for the last command.
 
-| Variable                                   | Description                                                         |
-| ------------------------------------------ | ------------------------------------------------------------------- |
-| `DATABASE_URL`                             | Pooled PostgreSQL connection string                                 |
-| `BETTER_AUTH_SECRET`                       | Random secret of at least 32 characters (`openssl rand -base64 32`) |
-| `BETTER_AUTH_URL`                          | Public origin, for example `http://localhost:3000`                  |
-| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Google OAuth credentials                                            |
-| `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` | GitHub OAuth credentials                                            |
+### Environment variables
 
-OAuth callback URLs:
+| Variable                                   | Purpose                                                                          |
+| :----------------------------------------- | :------------------------------------------------------------------------------- |
+| `DATABASE_URL`                             | Pooled PostgreSQL connection string; `POSTGRES_URL` is also accepted at runtime. |
+| `DATABASE_URL_UNPOOLED`                    | Optional direct database connection for migrations.                              |
+| `BETTER_AUTH_SECRET`                       | A random secret of at least 32 characters.                                       |
+| `BETTER_AUTH_URL`                          | Application origin, such as `http://localhost:3000`.                             |
+| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Optional Google OAuth credential pair.                                           |
+| `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` | Optional GitHub OAuth credential pair.                                           |
+| `API_BASE_URL`                             | Optional primary price API URL; defaults are in `.env.example`.                  |
+| `API_FALLBACK_BASE_URL`                    | Optional backup price API URL.                                                   |
 
-- Google: `{BETTER_AUTH_URL}/api/auth/callback/google`
-- GitHub: `{BETTER_AUTH_URL}/api/auth/callback/github`
+Generate a secret locally:
 
-Create the database tables, then start the app:
+```bash
+node -e "console.log(require('node:crypto').randomBytes(32).toString('base64'))"
+```
+
+Set up the database tables and start development:
 
 ```bash
 npm run auth:migrate
 npm run dev
 ```
 
-### Scripts
+Open the local URL printed in the terminal, usually `http://localhost:3000`.
 
-| Command                | Description                      |
-| ---------------------- | -------------------------------- |
-| `npm run dev`          | Start the development server     |
-| `npm run build`        | Create a production build        |
-| `npm run start`        | Serve the production build       |
-| `npm run lint`         | Run ESLint                       |
-| `npm run typecheck`    | Run the TypeScript compiler      |
-| `npm run format`       | Format the code with Prettier    |
-| `npm run auth:migrate` | Create or update the auth tables |
-| `npm run audit:prod`   | Audit production dependencies    |
+<details>
+<summary><strong>Configure Google and GitHub sign-in</strong></summary>
 
-## 🔒 Security
+<br />
 
-- Nonce based Content Security Policy, HSTS, `X-Frame-Options`, `nosniff`, a strict referrer policy and a locked down permissions policy.
-- Server side validation of every auth input with Zod, mirrored in the forms for instant feedback.
-- Session cookies are `HttpOnly`, `SameSite=Lax` and `Secure` in production, and requests from untrusted origins are rejected.
-- Database backed rate limiting on sign in, sign up and profile updates.
-- Callback URLs are restricted to same site paths, which prevents open redirects.
-- Protected pages are checked twice: optimistically in the proxy and authoritatively on the server.
-- API responses are validated against a schema, and users only ever see safe, localized error messages.
-- Secrets live in environment variables and are excluded from version control.
+Create OAuth applications with these callback URLs:
 
-## 📡 Data Source and Fallback
+| Provider | Callback                                     |
+| :------- | :------------------------------------------- |
+| Google   | `{BETTER_AUTH_URL}/api/auth/callback/google` |
+| GitHub   | `{BETTER_AUTH_URL}/api/auth/callback/github` |
 
-Prices come from the public BazarDor API, with a second API as an automatic backup.
+Set both the client ID and client secret for each provider you want to enable.
+Email/password authentication works without social provider credentials.
 
-1. **Live data first.** Every request goes to the primary API. If it is down, rate limited or returns bad data, the second API is used, and the failing one is skipped for a minute so the site stays fast. Successful responses are cached for 30 minutes.
-2. **Bundled snapshot as a safety net.** If both APIs are unavailable, the app serves a snapshot of the last known prices stored in `src/data` (33 products, 8 categories, prices from 12 markets each). The site never goes blank during an outage or a rate limit.
-3. **Back to live automatically.** As soon as an API responds again, live data is used and no action is needed.
+</details>
 
-The snapshot is only a fallback. Prices shown from it may be slightly older than the live API.
+### Available commands
 
-## ⚠️ Error Handling
+| Task                                | Command                |
+| :---------------------------------- | :--------------------- |
+| Start development                   | `npm run dev`          |
+| Build for production                | `npm run build`        |
+| Start the production server         | `npm run start`        |
+| Check TypeScript                    | `npm run typecheck`    |
+| Run ESLint                          | `npm run lint`         |
+| Format source files                 | `npm run format`       |
+| Create/update authentication tables | `npm run auth:migrate` |
+| Audit production dependencies       | `npm run audit:prod`   |
 
-Requests time out after 6 seconds and failures are typed (network, timeout, not found, rate limited, server, invalid response). Each one is shown as a clear Bangla message with a retry action. Unknown routes, invalid categories and unknown products render a friendly 404 with a link back to the home page.
+<br />
 
-## ☁️ Deployment
+## Deployment
 
-1. Push the repository to GitHub and import it in Vercel.
-2. Add the environment variables from the table above. Set `BETTER_AUTH_URL` to the production URL.
-3. Run `npm run auth:migrate` once against the production database.
-4. Add the production callback URLs to the Google and GitHub OAuth apps.
+1. Push the repository to GitHub and import the project into Vercel.
+2. Set required environment variables and the production origin for `BETTER_AUTH_URL`.
+3. Run the authentication migration against the production database.
+4. Register production callback URLs with your configured OAuth providers.
+5. Build and deploy; dynamic routes render on demand.
 
-All routes, including dynamic `[slug]` pages, are rendered on demand, so reloading any page works without a hard 404.
+## Project Links
 
-## 📄 License
+| Resource               | Link                                                                             |
+| :--------------------- | :------------------------------------------------------------------------------- |
+| GitHub repository      | [SamaunRezvi/assignment_seven](https://github.com/SamaunRezvi/assignment_seven)  |
+| Live application       | [BazarDor - daily market prices](https://assignment-seven-sigma-ten.vercel.app/) |
+| Repository description | [Copy-ready GitHub About text](./docs/repository-description.txt)                |
 
-This project was built as a learning assignment.
+## Project Note
+
+Built as a Programming Hero learning assignment. Prices vary between markets, and fallback
+data may be older than current market prices. The bundled numeral font carries its own
+[SIL Open Font License](./public/fonts/OFL-noto-sans-bengali.txt).
+
+<br />
+
+<div align="center">
+
+<p><strong>BAZARDOR</strong></p>
+<p><sub>KNOW YOUR MARKET · PLAN YOUR SHOP</sub></p>
+
+<a href="https://assignment-seven-sigma-ten.vercel.app/">Explore BazarDor ↗</a> &nbsp; · &nbsp; <a href="#top">Back to top ↑</a>
+
+</div>

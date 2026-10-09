@@ -1,0 +1,1 @@
+PH_B-14_A07 - BazarDor: a clean, Bangla-first market price tracker built with Next.js. Browse everyday essentials, compare prices across markets, follow daily price changes, and unlock detailed insights with secure sign-in.
