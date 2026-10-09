@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { routes } from "@/config/site";
-import { getCategory, getProductsByCategory } from "@/lib/api/products";
+import { Suspense } from "react";
+import { getCategory } from "@/lib/api/products";
 import { getUserMessage, isApiError } from "@/lib/api/errors";
-import { formatNumber } from "@/lib/format/bengali";
-import { SortableProductGrid } from "@/components/product/sortable-product-grid";
+import {
+  CategoryProducts,
+  CategorySubtitle,
+} from "@/components/product/category-products";
+import { ProductGridSkeleton } from "@/components/product/product-grid-skeleton";
 import { Container } from "@/components/ui/container";
 import { DataLoadError } from "@/components/ui/data-load-error";
-import type { Category, Product } from "@/types/product";
+import type { Category } from "@/types/product";
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
@@ -30,21 +32,23 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const { slug } = await params;
 
   let category: Category | null;
-  let products: Product[];
-
   try {
     category = await getCategory(slug);
-    if (!category) notFound();
-    products = await getProductsByCategory(category.slug);
   } catch (error) {
-    if (!isApiError(error)) throw error;
-    console.error(`[category:${slug}] Failed to load data`, error.kind);
+    console.error(
+      `[category:${slug}] Failed to load category`,
+      isApiError(error) ? error.kind : "unknown",
+    );
     return (
-      <DataLoadError message={getUserMessage(error)} retryable={error.isRetryable} />
+      <DataLoadError
+        message={getUserMessage(error)}
+        retryable={!isApiError(error) || error.isRetryable}
+      />
     );
   }
 
-  const total = formatNumber(products.length);
+  // Resolved before anything streams, so unknown categories get a real 404 status.
+  if (!category) notFound();
 
   return (
     <Container className="py-8">
@@ -57,31 +61,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </span>
         <div>
           <h1 className="text-3xl font-bold">{category.nameBn}</h1>
-          <p className="text-base-content/70">{total}টি পণ্যের আজকের দাম ও পরিবর্তন</p>
+          <Suspense fallback={<div className="skeleton mt-1 h-4 w-56" />}>
+            <CategorySubtitle slug={category.slug} />
+          </Suspense>
         </div>
       </header>
 
-      {products.length === 0 ? (
-        <div className="card border-base-300 bg-base-100 mx-auto max-w-lg border text-center">
-          <div className="card-body items-center gap-3 p-8">
-            <span aria-hidden="true" className="text-5xl">
-              📭
-            </span>
-            <h2 className="text-2xl font-bold">কোনো পণ্য পাওয়া যায়নি</h2>
-            <p className="text-base-content/70">
-              এই ধরনের কোনো পণ্যের দাম এখন তালিকায় নেই।
-            </p>
-            <Link href={routes.home} className="btn btn-primary mt-2">
-              হোম পেজে ফিরে যান
-            </Link>
-          </div>
-        </div>
-      ) : (
-        <SortableProductGrid
-          products={products}
-          summary={`মোট ${total}টি পণ্য দেখানো হচ্ছে`}
-        />
-      )}
+      <Suspense fallback={<ProductGridSkeleton count={8} />}>
+        <CategoryProducts slug={category.slug} />
+      </Suspense>
     </Container>
   );
 }
