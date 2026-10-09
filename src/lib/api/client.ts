@@ -2,10 +2,11 @@ import "server-only";
 import type { ZodType } from "zod";
 import { getServerEnv } from "@/lib/env";
 import { ApiError } from "./errors";
+import { getFallbackPayload } from "./fallback-data";
 
 const REQUEST_TIMEOUT_MS = 6000;
 const UNHEALTHY_COOLDOWN_MS = 60_000;
-const REVALIDATE_SECONDS = 300;
+const REVALIDATE_SECONDS = 1800;
 
 async function requestOnce<T>(baseUrl: string, path: string, schema: ZodType<T>) {
   let response: Response;
@@ -46,21 +47,39 @@ async function requestOnce<T>(baseUrl: string, path: string, schema: ZodType<T>)
 /** Endpoints that failed recently, mapped to the time they may be tried first again. */
 const unhealthyUntil = new Map<string, number>();
 
+function isHealthy(url: string): boolean {
+  return (unhealthyUntil.get(url) ?? 0) <= Date.now();
+}
+
 function orderEndpoints(endpoints: string[]): string[] {
-  const now = Date.now();
-  const isHealthy = (url: string) => (unhealthyUntil.get(url) ?? 0) <= now;
   return [...endpoints.filter(isHealthy), ...endpoints.filter((url) => !isHealthy(url))];
+}
+
+/** Serves the bundled snapshot, validated like a live response, when one exists. */
+function readSnapshot<T>(path: string, schema: ZodType<T>): T | undefined {
+  const payload = getFallbackPayload(path);
+  if (payload === undefined) return undefined;
+
+  const parsed = schema.safeParse(payload);
+  return parsed.success ? parsed.data : undefined;
 }
 
 /**
  * Fetches and validates JSON using whichever API is available. A failing API
  * is skipped for a minute so a single outage never slows every request, and
- * both APIs are still tried before an error is reported to the user.
+ * both APIs are still tried before falling back to the bundled snapshot.
  */
 export async function apiFetch<T>(path: string, schema: ZodType<T>): Promise<T> {
   const env = getServerEnv();
-  const endpoints = orderEndpoints([env.API_BASE_URL, env.API_FALLBACK_BASE_URL]);
+  const configured = [env.API_BASE_URL, env.API_FALLBACK_BASE_URL];
 
+  // Both APIs failed moments ago: do not hammer them again, use the snapshot.
+  if (!configured.some(isHealthy)) {
+    const snapshot = readSnapshot(path, schema);
+    if (snapshot !== undefined) return snapshot;
+  }
+
+  const endpoints = orderEndpoints(configured);
   let lastError: ApiError | undefined;
 
   for (const baseUrl of endpoints) {
@@ -79,6 +98,12 @@ export async function apiFetch<T>(path: string, schema: ZodType<T>): Promise<T> 
       );
       lastError = error;
     }
+  }
+
+  const snapshot = readSnapshot(path, schema);
+  if (snapshot !== undefined) {
+    console.warn(`[api] All endpoints failed for ${path}, serving the bundled snapshot`);
+    return snapshot;
   }
 
   throw lastError ?? new ApiError("network");

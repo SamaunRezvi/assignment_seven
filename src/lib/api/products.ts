@@ -21,7 +21,11 @@ export const getCategory = cache(async (slug: string): Promise<Category | null> 
   try {
     return await apiFetch(`/categories/${slug}`, categorySchema);
   } catch (error) {
-    if (error instanceof ApiError && error.kind === "not-found") return null;
+    if (error instanceof ApiError) {
+      if (error.kind === "not-found") return null;
+      // Every endpoint is down and the bundled snapshot does not know this category.
+      if (error.shouldFailover) return null;
+    }
     throw error;
   }
 });
