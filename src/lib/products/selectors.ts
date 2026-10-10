@@ -49,6 +49,16 @@ export function sortMarketsByAverage(markets: readonly MarketPrice[]): MarketPri
   return [...markets].sort((a, b) => getMarketAverage(a) - getMarketAverage(b));
 }
 
+export function groupMarketsByDivision(markets: readonly MarketPrice[]) {
+  const groups = new Map<string, MarketPrice[]>();
+  for (const market of markets) {
+    const items = groups.get(market.division);
+    if (items) items.push(market);
+    else groups.set(market.division, [market]);
+  }
+  return Array.from(groups, ([division, items]) => ({ division, items }));
+}
+
 export function getPriceSummary(markets: readonly MarketPrice[]): PriceSummary | null {
   if (markets.length === 0) return null;
 
