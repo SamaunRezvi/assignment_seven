@@ -17,7 +17,11 @@ export default async function ProfilePage() {
   const { user } = await requireSession(routes.profile);
 
   return (
-    <Container className="py-6">
+    <Container className="max-w-3xl space-y-5 py-6">
+      <header className="space-y-1">
+        <h1 className="text-2xl font-bold">আমার প্রোফাইল</h1>
+        <p className="text-base-content/70">আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।</p>
+      </header>
       <div className="card border-base-300 bg-base-100 border shadow-sm">
         <div className="card-body items-center gap-5 p-6 text-center sm:p-10">
           <span
@@ -27,7 +31,7 @@ export default async function ProfilePage() {
             {user.name.trim().charAt(0).toUpperCase()}
           </span>
           <div className="space-y-1">
-            <h1 className="text-3xl font-bold">{user.name}</h1>
+            <h2 className="text-3xl font-bold">{user.name}</h2>
             <p className="text-base-content/70 break-all">{user.email}</p>
           </div>
 
