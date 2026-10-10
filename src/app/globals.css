@@ -85,6 +85,10 @@
   }
 }
 
+@utility text-primary-strong {
+  color: color-mix(in oklab, var(--color-primary) 80%, black);
+}
+
 @utility animate-ticker {
   animation: ticker-scroll 45s linear infinite;
 }

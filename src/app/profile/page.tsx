@@ -37,11 +37,11 @@ export default async function ProfilePage() {
 
           <dl className="border-base-300 grid w-full grid-cols-1 gap-3 border-t border-dashed pt-5 text-center sm:grid-cols-2">
             <div>
-              <dt className="text-base-content/60 text-sm">নাম</dt>
+              <dt className="text-base-content/70 text-sm">নাম</dt>
               <dd className="font-medium">{user.name}</dd>
             </div>
             <div>
-              <dt className="text-base-content/60 text-sm">যোগ দিয়েছেন</dt>
+              <dt className="text-base-content/70 text-sm">যোগ দিয়েছেন</dt>
               <dd className="font-medium">
                 {joinedFormatter.format(new Date(user.createdAt))}
               </dd>

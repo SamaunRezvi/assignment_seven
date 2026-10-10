@@ -37,7 +37,7 @@ export function FormField({
         {isPassword ? (
           <button
             type="button"
-            className="password-toggle text-base-content/50 hover:bg-primary/8 hover:text-primary absolute top-1/2 right-1 grid size-8 -translate-y-1/2 place-items-center rounded-md transition-colors disabled:pointer-events-none disabled:opacity-40"
+            className="password-toggle text-base-content/70 hover:bg-primary/8 hover:text-primary absolute top-1/2 right-1 grid size-8 -translate-y-1/2 place-items-center rounded-md transition-colors disabled:pointer-events-none disabled:opacity-40"
             onClick={() => setIsPasswordVisible((visible) => !visible)}
             disabled={props.disabled}
             aria-label={toggleLabel}

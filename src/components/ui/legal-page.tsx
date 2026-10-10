@@ -19,7 +19,7 @@ export function LegalPage({ title, updated, intro, sections }: LegalPageProps) {
         <div className="card-body gap-6 p-6 sm:p-10">
           <header className="space-y-2">
             <h1 className="text-3xl font-bold">{title}</h1>
-            <p className="text-base-content/60 text-sm">Last updated: {updated}</p>
+            <p className="text-base-content/70 text-sm">Last updated: {updated}</p>
             <p className="text-base-content/80">{intro}</p>
           </header>
 

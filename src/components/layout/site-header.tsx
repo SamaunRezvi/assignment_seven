@@ -38,7 +38,7 @@ export function SiteHeader() {
               <span className="block text-xl font-bold tracking-tight">
                 {siteConfig.name}
               </span>
-              <span className="text-base-content/60 block text-xs">
+              <span className="text-base-content/70 block text-xs">
                 {formatBengaliDate()}
               </span>
             </span>

@@ -4,14 +4,14 @@ import type { Product } from "@/types/product";
 
 function Trend({ current, previous }: { current: number; previous: number }) {
   if (previous === 0 || current === previous) {
-    return <span className="text-base-content/50 text-sm">০.০%</span>;
+    return <span className="text-base-content/70 text-sm">০.০%</span>;
   }
 
   const percent = ((current - previous) / previous) * 100;
   const isUp = percent > 0;
 
   return (
-    <span className={cn("text-sm font-semibold", isUp ? "text-success" : "text-error")}>
+    <span className={cn("text-sm font-semibold", isUp ? "price-up" : "price-down")}>
       {isUp ? "▲" : "▼"} {formatPercent(percent)}
     </span>
   );
@@ -36,11 +36,11 @@ export function PriceHistory({ product }: { product: Product }) {
             className="border-base-300 bg-base-100 flex items-center justify-between gap-3 rounded-2xl border p-5"
           >
             <div>
-              <p className="text-base-content/60 text-sm">{row.label}</p>
+              <p className="text-base-content/70 text-sm">{row.label}</p>
               <p className="text-xl font-bold">{formatPrice(row.value)}</p>
             </div>
             <div className="text-right">
-              <p className="text-base-content/50 text-xs">আজকের তুলনায়</p>
+              <p className="text-base-content/70 text-xs">আজকের তুলনায়</p>
               <Trend current={product.today} previous={row.value} />
             </div>
           </li>

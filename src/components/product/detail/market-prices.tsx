@@ -25,7 +25,7 @@ export function MarketPrices({ markets }: { markets: MarketPrice[] }) {
             key={group.division}
             className="border-base-300 bg-base-100 min-w-0 overflow-hidden rounded-2xl border"
           >
-            <h3 className="bg-primary/10 text-primary px-5 py-3 font-semibold">
+            <h3 className="bg-primary/10 text-primary-strong px-5 py-3 font-semibold">
               {group.division} বিভাগ
             </h3>
             <div className="overflow-x-auto">
@@ -50,10 +50,10 @@ export function MarketPrices({ markets }: { markets: MarketPrice[] }) {
                       <th scope="row" className="font-medium">
                         {market.market}
                       </th>
-                      <td className="text-success text-right whitespace-nowrap">
+                      <td className="price-up text-right whitespace-nowrap">
                         {formatMarketPrice(market.min)}
                       </td>
-                      <td className="text-error text-right whitespace-nowrap">
+                      <td className="price-down text-right whitespace-nowrap">
                         {formatMarketPrice(market.max)}
                       </td>
                       <td className="text-right font-semibold whitespace-nowrap">

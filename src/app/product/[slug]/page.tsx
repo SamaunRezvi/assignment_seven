@@ -44,7 +44,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <nav aria-label="পেজ নেভিগেশন">
         <ol className="text-base-content/70 flex flex-wrap items-center gap-2 text-sm">
           <li>
-            <Link href={routes.home} className="link link-hover text-primary font-medium">
+            <Link
+              href={routes.home}
+              className="link link-hover text-primary-strong font-medium"
+            >
               হোম
             </Link>
           </li>
@@ -52,7 +55,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <li>
             <Link
               href={routes.category(product.category)}
-              className="link link-hover text-primary font-medium"
+              className="link link-hover text-primary-strong font-medium"
             >
               {product.categoryNameBn}
             </Link>

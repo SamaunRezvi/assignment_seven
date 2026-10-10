@@ -20,12 +20,12 @@ export function ProductCard({ product }: { product: Product }) {
           </span>
           <div className="min-w-0">
             <h3 className="truncate text-base font-semibold">{product.nameBn}</h3>
-            <p className="text-base-content/60 text-xs">{formatUnit(product.unit)}</p>
+            <p className="text-base-content/70 text-xs">{formatUnit(product.unit)}</p>
           </div>
         </div>
         <div className="flex items-end justify-between gap-2">
           <div>
-            <p className="text-base-content/60 text-xs">আজকের দাম</p>
+            <p className="text-base-content/70 text-xs">আজকের দাম</p>
             <p className="text-xl font-bold">
               {formatNumber(product.today)}{" "}
               <span className="text-sm font-medium">টাকা</span>

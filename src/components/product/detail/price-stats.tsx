@@ -40,9 +40,9 @@ export function PriceStats({ summary, unit }: PriceStatsProps) {
       <h2 id="price-summary" className="mb-4 text-2xl font-bold">
         দামের সারসংক্ষেপ
       </h2>
-      <dl className="grid gap-4 sm:grid-cols-3">
+      <ul className="grid gap-4 sm:grid-cols-3">
         {stats.map((stat) => (
-          <div
+          <li
             key={stat.label}
             className="border-base-300 bg-base-100 flex items-center gap-4 rounded-2xl border p-5"
           >
@@ -50,20 +50,20 @@ export function PriceStats({ summary, unit }: PriceStatsProps) {
               {stat.icon}
             </span>
             <div className="min-w-0">
-              <dt className="text-base-content/60 text-sm">{stat.label}</dt>
-              <dd className={`text-2xl font-bold ${stat.tone}`}>
+              <p className="text-base-content/70 text-sm">{stat.label}</p>
+              <p className={`text-2xl font-bold ${stat.tone}`}>
                 {formatPrice(stat.value)}
-              </dd>
-              <dd className="text-base-content/60 text-xs">{stat.caption}</dd>
+              </p>
+              <p className="text-base-content/70 text-xs">{stat.caption}</p>
               {stat.market ? (
-                <dd className="text-base-content/80 truncate text-xs font-medium">
+                <p className="text-base-content/80 truncate text-xs font-medium">
                   {stat.market}
-                </dd>
+                </p>
               ) : null}
             </div>
-          </div>
+          </li>
         ))}
-      </dl>
+      </ul>
     </section>
   );
 }

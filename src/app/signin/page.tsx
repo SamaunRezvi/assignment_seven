@@ -35,7 +35,7 @@ export default async function SignInPage({ searchParams }: SignInPageProps) {
         footer={
           <>
             অ্যাকাউন্ট নেই?{" "}
-            <Link href={signUpHref} className="link link-primary font-medium">
+            <Link href={signUpHref} className="link text-primary-strong font-medium">
               সাইন আপ করুন
             </Link>
           </>

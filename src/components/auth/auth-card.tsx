@@ -24,7 +24,7 @@ export function AuthCard({ title, description, children, footer }: AuthCardProps
           </div>
         </div>
       </div>
-      <p className="text-base-content/60 text-center text-sm">
+      <p className="text-base-content/70 text-center text-sm">
         <Link href={routes.home} className="link">
           ← হোম পেজে ফিরে যান
         </Link>

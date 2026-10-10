@@ -36,7 +36,7 @@ export function ProductSummary({ product }: { product: Product }) {
               <li>
                 <Link
                   href={routes.category(product.category)}
-                  className="badge badge-primary badge-soft hover:badge-primary h-auto gap-1 px-3 py-1.5"
+                  className="badge text-primary-strong hover:bg-primary hover:text-primary-content bg-primary/10 h-auto gap-1 border-0 px-3 py-1.5"
                 >
                   <span aria-hidden="true">{product.categoryIcon}</span>
                   {product.categoryNameBn}
@@ -50,11 +50,11 @@ export function ProductSummary({ product }: { product: Product }) {
             </ul>
           </div>
           <div className="border-base-300 border-t border-dashed pt-4 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-6 sm:text-right">
-            <p className="text-base-content/60 text-sm">আজকের দাম</p>
+            <p className="text-base-content/70 text-sm">আজকের দাম</p>
             <p className="text-primary text-4xl leading-tight font-bold">
               {formatNumber(product.today)}
             </p>
-            <p className="text-base-content/60 text-sm">
+            <p className="text-base-content/70 text-sm">
               টাকা / {formatShortUnit(product.unit)}
             </p>
           </div>

@@ -7,7 +7,7 @@ export function Hero() {
     <section className="hero border-base-300 bg-base-100 rounded-3xl border">
       <div className="hero-content w-full flex-col items-start gap-6 py-10 lg:flex-row lg:justify-between">
         <div className="max-w-xl">
-          <p className="bg-primary/10 text-primary mb-2 inline-flex rounded-full px-3 py-1 text-sm font-medium">
+          <p className="bg-primary/10 text-primary-strong mb-2 inline-flex rounded-full px-3 py-1 text-sm font-medium">
             {formatBengaliDate()}
           </p>
           <h1 className="text-3xl leading-tight font-bold sm:text-4xl">

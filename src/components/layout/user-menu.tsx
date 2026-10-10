@@ -48,7 +48,6 @@ export function UserMenu({ name, email }: { name: string; email: string }) {
       <button
         ref={triggerRef}
         type="button"
-        aria-label={`${name} - অ্যাকাউন্ট`}
         aria-expanded={isOpen}
         aria-controls={menuId}
         onClick={() => setIsOpen((open) => !open)}
@@ -60,8 +59,9 @@ export function UserMenu({ name, email }: { name: string; email: string }) {
         >
           {name.trim().charAt(0).toUpperCase()}
         </span>
+        <span className="sr-only sm:hidden">{name}</span>
         <span className="hidden min-w-0 truncate sm:inline">{name}</span>
-        <span aria-hidden="true" className="text-base-content/60 shrink-0 text-xs">
+        <span aria-hidden="true" className="text-base-content/70 shrink-0 text-xs">
           ▾
         </span>
       </button>
@@ -73,7 +73,7 @@ export function UserMenu({ name, email }: { name: string; email: string }) {
         >
           <div className="px-2 py-1">
             <p className="text-base-content/80 truncate text-sm font-semibold">{name}</p>
-            <p className="text-base-content/65 text-xs break-all">{email}</p>
+            <p className="text-base-content/70 text-xs break-all">{email}</p>
           </div>
           <div className="mt-1">
             <Link

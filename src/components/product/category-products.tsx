@@ -64,9 +64,12 @@ export async function CategoryProducts({ slug }: { slug: string }) {
   }
 
   return (
-    <SortableProductGrid
-      products={products}
-      summary={`মোট ${total}টি পণ্য দেখানো হচ্ছে`}
-    />
+    <>
+      <h2 className="sr-only">পণ্যের তালিকা</h2>
+      <SortableProductGrid
+        products={products}
+        summary={`মোট ${total}টি পণ্য দেখানো হচ্ছে`}
+      />
+    </>
   );
 }
