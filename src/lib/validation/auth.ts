@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+// Skip zod's runtime code generation. Its eval probe is blocked by the strict
+// Content Security Policy, and these schemas are too small to need it.
+z.config({ jitless: true });
+
 const email = z
   .string()
   .trim()
