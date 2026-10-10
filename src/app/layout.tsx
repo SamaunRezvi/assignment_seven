@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import { siteConfig } from "@/config/site";
+import { OAuthErrorToast } from "@/components/auth/oauth-error-toast";
 import { AppToaster } from "@/components/layout/app-toaster";
 import { PriceTicker, TickerSkeleton } from "@/components/layout/price-ticker";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -34,6 +35,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1">{children}</main>
         <SiteFooter />
         <AppToaster />
+        <Suspense fallback={null}>
+          <OAuthErrorToast />
+        </Suspense>
       </body>
     </html>
   );

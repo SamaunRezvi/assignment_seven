@@ -43,6 +43,17 @@ function createAuth() {
       maxPasswordLength: 128,
     },
     socialProviders,
+    // Signing in with Google or GitHub links to the existing account that uses
+    // the same email, but only when the provider itself reports that email as
+    // verified. Local emails are never verified (there is no email verification
+    // step), so the local check is relaxed; an unverified provider email is
+    // still refused.
+    account: {
+      accountLinking: {
+        enabled: true,
+        requireLocalEmailVerified: false,
+      },
+    },
     // No cookie cache: every request is checked against the database, so a
     // session that was signed out or revoked stops working immediately.
     session: {

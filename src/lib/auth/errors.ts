@@ -22,6 +22,27 @@ const codeMessages: Record<string, string> = {
 export const NETWORK_ERROR_MESSAGE =
   "ইন্টারনেট সংযোগে সমস্যা হয়েছে। সংযোগ পরীক্ষা করে আবার চেষ্টা করুন।";
 
+const LINK_FAILED_MESSAGE =
+  "এই ইমেইল দিয়ে আগে অন্য পদ্ধতিতে অ্যাকাউন্ট খোলা আছে। আগের পদ্ধতিতে সাইন ইন করুন।";
+
+const oauthErrorMessages: Record<string, string> = {
+  account_not_linked: LINK_FAILED_MESSAGE,
+  unable_to_link_account: LINK_FAILED_MESSAGE,
+  email_does_not_match: LINK_FAILED_MESSAGE,
+  account_already_linked_to_different_user:
+    "এই অ্যাকাউন্ট আগেই অন্য ব্যবহারকারীর সাথে যুক্ত আছে।",
+  email_not_found:
+    "আপনার অ্যাকাউন্টে কোনো ইমেইল পাওয়া যায়নি। অন্য পদ্ধতিতে সাইন ইন করুন।",
+  email_not_verified: "আপনার ইমেইল যাচাই করা নেই। ইমেইল যাচাই করে আবার চেষ্টা করুন।",
+  access_denied: "সাইন ইন বাতিল করা হয়েছে।",
+  oauth_provider_not_found: "এই মাধ্যমে সাইন ইন এখন চালু নেই।",
+};
+
+/** A safe, localized message for an OAuth error code from the callback URL. */
+export function getOAuthErrorMessage(code: string): string {
+  return oauthErrorMessages[code] ?? "সাইন ইন সম্পন্ন করা যায়নি। আবার চেষ্টা করুন।";
+}
+
 /** Maps an auth client error to a message that is safe to show to the user. */
 export function getAuthErrorMessage(
   error: AuthErrorLike | null | undefined,
