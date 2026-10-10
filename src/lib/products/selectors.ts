@@ -35,6 +35,18 @@ export interface PriceSummary {
   min: number;
   max: number;
   average: number;
+  lowestMarket: string;
+  highestMarket: string;
+}
+
+/** The middle of a market's range, shown as that market's average price. */
+export function getMarketAverage(market: MarketPrice): number {
+  return (market.min + market.max) / 2;
+}
+
+/** Cheapest markets first, so the market table reads from low to high. */
+export function sortMarketsByAverage(markets: readonly MarketPrice[]): MarketPrice[] {
+  return [...markets].sort((a, b) => getMarketAverage(a) - getMarketAverage(b));
 }
 
 export function getPriceSummary(markets: readonly MarketPrice[]): PriceSummary | null {
@@ -42,16 +54,14 @@ export function getPriceSummary(markets: readonly MarketPrice[]): PriceSummary |
 
   const min = Math.min(...markets.map((market) => market.min));
   const max = Math.max(...markets.map((market) => market.max));
-  const midpoints = markets.map((market) => (market.min + market.max) / 2);
-  const average = midpoints.reduce((sum, value) => sum + value, 0) / midpoints.length;
+  const averages = markets.map(getMarketAverage);
+  const average = averages.reduce((sum, value) => sum + value, 0) / averages.length;
 
-  return { min, max, average: Math.round(average) };
-}
-
-export function groupMarketsByDivision(markets: readonly MarketPrice[]) {
-  const groups = new Map<string, MarketPrice[]>();
-  for (const market of markets) {
-    groups.set(market.division, [...(groups.get(market.division) ?? []), market]);
-  }
-  return Array.from(groups, ([division, items]) => ({ division, items }));
+  return {
+    min,
+    max,
+    average: Math.round(average),
+    lowestMarket: markets.find((market) => market.min === min)?.market ?? "",
+    highestMarket: markets.find((market) => market.max === max)?.market ?? "",
+  };
 }

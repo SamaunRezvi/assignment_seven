@@ -9,9 +9,30 @@ interface PriceStatsProps {
 
 export function PriceStats({ summary, unit }: PriceStatsProps) {
   const stats = [
-    { label: "সর্বনিম্ন দাম", value: summary.min, tone: "text-success", icon: "📉" },
-    { label: "সর্বোচ্চ দাম", value: summary.max, tone: "text-error", icon: "📈" },
-    { label: "গড় দাম", value: summary.average, tone: "text-primary", icon: "⚖️" },
+    {
+      label: "সর্বনিম্ন দাম",
+      value: summary.min,
+      caption: "সবচেয়ে কম দামের বাজার",
+      market: summary.lowestMarket,
+      tone: "text-success",
+      icon: "📉",
+    },
+    {
+      label: "সর্বাধিক দাম",
+      value: summary.max,
+      caption: "সবচেয়ে বেশি দামের বাজার",
+      market: summary.highestMarket,
+      tone: "text-error",
+      icon: "📈",
+    },
+    {
+      label: "গড় দাম",
+      value: summary.average,
+      caption: `${formatUnit(unit)}-এর হিসাবে`,
+      market: "",
+      tone: "text-primary",
+      icon: "⚖️",
+    },
   ];
 
   return (
@@ -28,12 +49,17 @@ export function PriceStats({ summary, unit }: PriceStatsProps) {
             <span aria-hidden="true" className="text-3xl">
               {stat.icon}
             </span>
-            <div>
+            <div className="min-w-0">
               <dt className="text-base-content/60 text-sm">{stat.label}</dt>
               <dd className={`text-2xl font-bold ${stat.tone}`}>
                 {formatPrice(stat.value)}
               </dd>
-              <dd className="text-base-content/50 text-xs">{formatUnit(unit)}</dd>
+              <dd className="text-base-content/60 text-xs">{stat.caption}</dd>
+              {stat.market ? (
+                <dd className="text-base-content/80 truncate text-xs font-medium">
+                  {stat.market}
+                </dd>
+              ) : null}
             </div>
           </div>
         ))}

@@ -42,12 +42,24 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <Container className="space-y-10 py-8">
       <nav aria-label="পেজ নেভিগেশন">
-        <Link
-          href={routes.home}
-          className="link link-hover text-primary text-sm font-medium"
-        >
-          ← হোম পেজে ফিরে যান
-        </Link>
+        <ol className="text-base-content/70 flex flex-wrap items-center gap-2 text-sm">
+          <li>
+            <Link href={routes.home} className="link link-hover text-primary font-medium">
+              হোম
+            </Link>
+          </li>
+          <li aria-hidden="true">›</li>
+          <li>
+            <Link
+              href={routes.category(product.category)}
+              className="link link-hover text-primary font-medium"
+            >
+              {product.categoryNameBn}
+            </Link>
+          </li>
+          <li aria-hidden="true">›</li>
+          <li aria-current="page">{product.nameBn}</li>
+        </ol>
       </nav>
       <ProductSummary product={product} />
       {summary ? <PriceStats summary={summary} unit={product.unit} /> : null}

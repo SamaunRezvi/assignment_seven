@@ -35,6 +35,19 @@ export function formatNumber(value: number): string {
   return numberFormatter.format(value);
 }
 
+const decimalNumberFormatter = new Intl.NumberFormat(siteConfig.locale, {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+/** Whole amounts stay plain (৬২ টাকা), halves show two decimals (৬৩.৫০ টাকা). */
+export function formatMarketPrice(value: number): string {
+  const amount = Number.isInteger(value)
+    ? formatNumber(value)
+    : decimalNumberFormatter.format(value);
+  return `${amount} টাকা`;
+}
+
 export function formatPrice(value: number): string {
   return `${formatNumber(value)} টাকা`;
 }

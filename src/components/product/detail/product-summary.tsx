@@ -1,13 +1,16 @@
 import Link from "next/link";
 import { routes } from "@/config/site";
-import {
-  formatNumber,
-  formatPrice,
-  formatShortUnit,
-  formatUnit,
-} from "@/lib/format/bengali";
+import { formatNumber, formatShortUnit, formatUnit } from "@/lib/format/bengali";
 import { ChangeBadge } from "@/components/ui/change-badge";
 import type { Product } from "@/types/product";
+
+function describeChange(product: Product): string {
+  const difference = product.today - product.yesterday;
+  if (difference === 0) return "গতকালের তুলনায় আজ দাম অপরিবর্তিত";
+
+  const direction = difference > 0 ? "বেড়েছে" : "কমেছে";
+  return `গতকালের তুলনায় আজ দাম ${direction} · ${formatNumber(Math.abs(difference))} টাকা`;
+}
 
 export function ProductSummary({ product }: { product: Product }) {
   return (
@@ -23,9 +26,11 @@ export function ProductSummary({ product }: { product: Product }) {
           <div className="min-w-0 flex-1 space-y-2">
             <h1 className="text-2xl font-bold sm:text-4xl">{product.nameBn}</h1>
             <p className="text-base-content/70">
-              {formatNumber(product.markets.length)}টি বাজারের তথ্য অনুযায়ী{" "}
-              {product.nameBn} এর আজকের দাম {formatPrice(product.today)},{" "}
-              {formatUnit(product.unit)}।
+              {formatUnit(product.unit)} · {product.categoryNameBn}
+            </p>
+            <p className="text-base-content/80 flex flex-wrap items-center gap-2">
+              {describeChange(product)}
+              <ChangeBadge change={product.change} className="text-sm" />
             </p>
             <ul className="flex flex-wrap gap-2 pt-1">
               <li>
@@ -44,17 +49,14 @@ export function ProductSummary({ product }: { product: Product }) {
               </li>
             </ul>
           </div>
-          <div className="border-base-300 flex items-center justify-between gap-4 border-t border-dashed pt-4 sm:flex-col sm:items-end sm:border-t-0 sm:border-l sm:pt-0 sm:pl-6">
-            <div className="sm:text-right">
-              <p className="text-base-content/60 text-sm">আজকের দাম</p>
-              <p className="text-primary text-3xl font-bold">
-                {formatPrice(product.today)}
-              </p>
-              <p className="text-base-content/60 text-xs">
-                {formatUnit(product.unit)} ({formatShortUnit(product.unit)})
-              </p>
-            </div>
-            <ChangeBadge change={product.change} className="text-sm" />
+          <div className="border-base-300 border-t border-dashed pt-4 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-6 sm:text-right">
+            <p className="text-base-content/60 text-sm">আজকের দাম</p>
+            <p className="text-primary text-4xl leading-tight font-bold">
+              {formatNumber(product.today)}
+            </p>
+            <p className="text-base-content/60 text-sm">
+              টাকা / {formatShortUnit(product.unit)}
+            </p>
           </div>
         </div>
       </div>
