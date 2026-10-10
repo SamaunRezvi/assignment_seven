@@ -151,6 +151,10 @@ Built as a Programming Hero learning assignment. Prices vary between markets and
 older than current market prices. The bundled numeral font carries its own
 [SIL Open Font License](./public/fonts/OFL-noto-sans-bengali.txt).
 
+**Good to know:** the live site runs on free hosting tiers. If nobody has used it for a few
+minutes, the free database goes to sleep and the first sign in or sign up can take a couple
+of seconds longer. It wakes up by itself and works normally right after, and no data is lost.
+
 <br />
 
 <div align="center">
