@@ -71,7 +71,7 @@ function readSnapshot<T>(path: string, schema: ZodType<T>): T | undefined {
  */
 export async function apiFetch<T>(path: string, schema: ZodType<T>): Promise<T> {
   const env = getServerEnv();
-  const configured = [env.API_BASE_URL, env.API_FALLBACK_BASE_URL];
+  const configured = env.API_BASE_URLS;
 
   // Both APIs failed moments ago: do not hammer them again, use the snapshot.
   if (!configured.some(isHealthy)) {
