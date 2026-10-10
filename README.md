@@ -36,7 +36,7 @@
 
 Browse rice, lentils, oil, vegetables, fish, meat, dairy and spices. See today's price,
 follow changes from yesterday and sort essentials by price. Sign in to explore minimum,
-maximum and average prices, historical comparisons and a market table with minimum, maximum and average prices.
+maximum and average prices, historical comparisons and market prices grouped by division.
 
 Built with Next.js and React, the project combines public price data, account sign in and
 a responsive interface. Bengali numerals have their own font, and the app keeps working with
@@ -46,7 +46,7 @@ the last known prices if the price service is temporarily unavailable.
 
 1. **Live price ticker and daily movers.** A scrolling ticker shows every price with its ▲ ▼ change, and the home page highlights the top 6 risers and top 6 fallers.
 2. **Category browsing with numeric sorting.** Eight category pages share one card design, and the sort control orders real prices correctly, including Bengali numerals.
-3. **Detailed product pages.** After signing in, each product shows minimum, maximum and average prices, a comparison with earlier days, and a table of 12 markets with minimum, maximum and average prices.
+3. **Detailed product pages.** After signing in, each product shows minimum, maximum and average prices, a comparison with earlier days, and 12 markets grouped by division, each with minimum, maximum and average prices.
 4. **Easy sign in.** Create an account with email and password, or continue with Google or GitHub, with clear toast feedback along the way.
 5. **Profile management.** A My Profile page and an update information form to change the display name.
 
