@@ -26,8 +26,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="bn" data-theme="bazardor">
-      <body className="flex min-h-screen flex-col font-sans antialiased">
+    // Browser extensions (Grammarly, dark mode tools) add attributes to <html> and
+    // <body> before React loads. Silence only those two elements' mismatch warning.
+    <html lang="bn" data-theme="bazardor" suppressHydrationWarning>
+      <body
+        className="flex min-h-screen flex-col font-sans antialiased"
+        suppressHydrationWarning
+      >
         <SiteHeader />
         <Suspense fallback={<TickerSkeleton />}>
           <PriceTicker />
